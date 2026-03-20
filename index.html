@@ -172,7 +172,7 @@
     </footer>
 </body>
     <!-- Google Maps JS API -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYaEO6La-OE4cHMqXUK_sRgEHScmOFr0Q&callback=initSKFMap" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYaEO6La-OE4cHMqXUK_sRgEHScmOFr0Q&libraries=routes&callback=initSKFMap&language=en" async defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
@@ -181,7 +181,7 @@
         <!-- Custom JS -->
         <script src="script.js"></script>
         <script>
-        function initSKFMap() {
+        async function initSKFMap() {
             const cities = [
                 { name: 'Detroit, MI', pos: { lat: 42.331427, lng: -83.0457538 } },
                 { name: 'Chicago, IL', pos: { lat: 41.8781136, lng: -87.6297982 } },
@@ -194,7 +194,6 @@
                 zoom: 6,
                 center: { lat: 41.8, lng: -85.5 },
                 mapTypeId: 'roadmap',
-                language: 'en',
                 styles: [
                     { elementType: 'geometry', stylers: [{ color: '#f5f5f5' }] },
                     { elementType: 'labels.text.stroke', stylers: [{ color: '#ffffff' }] },
@@ -204,45 +203,85 @@
                 ]
             });
             // Markers
-            cities.forEach(city => {
-                new google.maps.Marker({
-                    position: city.pos,
-                    map,
-                    title: city.name,
-                    icon: {
-                        path: google.maps.SymbolPath.CIRCLE,
-                        scale: 7,
-                        fillColor: '#FFD600',
-                        fillOpacity: 1,
-                        strokeColor: '#222',
-                        strokeWeight: 2
-                    }
+            // Use AdvancedMarkerElement for modern markers
+            if (google.maps.marker && google.maps.marker.AdvancedMarkerElement) {
+                cities.forEach(city => {
+                    new google.maps.marker.AdvancedMarkerElement({
+                        map,
+                        position: city.pos,
+                        title: city.name,
+                        content: (() => {
+                            const el = document.createElement('div');
+                            el.style.background = '#FFD600';
+                            el.style.border = '2px solid #222';
+                            el.style.width = '18px';
+                            el.style.height = '18px';
+                            el.style.borderRadius = '50%';
+                            el.style.boxShadow = '0 0 4px #FFD60088';
+                            el.style.display = 'block';
+                            return el;
+                        })()
+                    });
                 });
-            });
-            // Routes from Detroit to each city
-            const detroit = cities[0].pos;
-            const directionsService = new google.maps.DirectionsService();
-            const directionsRendererOptions = {
-                suppressMarkers: true,
-                preserveViewport: true,
-                polylineOptions: {
-                    strokeColor: '#FFD600',
-                    strokeWeight: 4,
-                    strokeOpacity: 0.9
+            } else {
+                cities.forEach(city => {
+                    new google.maps.Marker({
+                        position: city.pos,
+                        map,
+                        title: city.name,
+                        icon: {
+                            path: google.maps.SymbolPath.CIRCLE,
+                            scale: 7,
+                            fillColor: '#FFD600',
+                            fillOpacity: 1,
+                            strokeColor: '#222',
+                            strokeWeight: 2
+                        }
+                    });
+                });
+            }
+            // Routes API (computeRoutes)
+            if (google.maps.routes && google.maps.routes.Route) {
+                const detroit = cities[0];
+                for (let i = 1; i < cities.length; i++) {
+                    const destination = cities[i];
+                    const request = {
+                        origin: { location: { latLng: detroit.pos } },
+                        destination: { location: { latLng: destination.pos } },
+                        travelMode: 'DRIVE',
+                        routingPreference: 'TRAFFIC_AWARE',
+                        computeAlternativeRoutes: false,
+                        language: 'en-US',
+                        units: 'IMPERIAL',
+                    };
+                    google.maps.routes.Route.computeRoutes({
+                        origin: request.origin,
+                        destination: request.destination,
+                        travelMode: request.travelMode,
+                        routingPreference: request.routingPreference,
+                        computeAlternativeRoutes: request.computeAlternativeRoutes,
+                        languageCode: request.languageCode,
+                        units: request.units
+                    }).then(response => {
+                        if (response && response.routes && response.routes.length > 0) {
+                            const route = response.routes[0];
+                            const path = [];
+                            route.legs.forEach(leg => {
+                                leg.steps.forEach(step => {
+                                    step.polyline.encodedPolyline && path.push(...google.maps.geometry.encoding.decodePath(step.polyline.encodedPolyline));
+                                });
+                            });
+                            new google.maps.Polyline({
+                                path: path,
+                                geodesic: true,
+                                strokeColor: '#FFD600',
+                                strokeOpacity: 0.9,
+                                strokeWeight: 4,
+                                map: map
+                            });
+                        }
+                    });
                 }
-            };
-            for (let i = 1; i < cities.length; i++) {
-                const renderer = new google.maps.DirectionsRenderer(directionsRendererOptions);
-                renderer.setMap(map);
-                directionsService.route({
-                    origin: detroit,
-                    destination: cities[i].pos,
-                    travelMode: google.maps.TravelMode.DRIVING
-                }, (result, status) => {
-                    if (status === 'OK') {
-                        renderer.setDirections(result);
-                    }
-                });
             }
         }
         </script>
