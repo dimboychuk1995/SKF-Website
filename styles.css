@@ -1,0 +1,334 @@
+body {
+    margin: 0;
+    font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #e6f0fa 0%, #f8f9fa 100%);
+    color: #222;
+    min-height: 100vh;
+    transition: background 0.6s;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.wide-container {
+    max-width: 1600px !important;
+}
+header {
+    background: linear-gradient(90deg, #003366 60%, #00509e 100%);
+    color: #fff;
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
+    box-shadow: 0 4px 24px rgba(0,51,102,0.08);
+    padding: 0;
+    transition: background 0.5s;
+}
+.logo {
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    color: #ffcc00;
+    transition: color 0.3s;
+}
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px;
+}
+.nav-link {
+    color: #fff !important;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: color 0.2s, text-shadow 0.2s;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+.nav-link:hover, .nav-link.active {
+    color: #ffcc00 !important;
+    text-shadow: 0 2px 8px rgba(255,204,0,0.15);
+}
+.hero {
+    background: linear-gradient(120deg, #003366 70%, #00509e 100%);
+    color: #fff;
+    padding: 100px 0 80px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    min-height: 420px;
+    box-shadow: 0 8px 32px rgba(0,51,102,0.08);
+    transition: background 0.6s;
+}
+.hero-overlay {
+    background: url('images/hero-bg.jpg') center/cover no-repeat;
+    opacity: 0.18;
+    z-index: 0;
+}
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+.quote-form {
+    box-shadow: 0 4px 32px rgba(0,51,102,0.10);
+    transition: box-shadow 0.3s;
+}
+.quote-form input, .contact-form input, .contact-form textarea {
+    border: 1.5px solid #e6f0fa;
+    background: #f8f9fa;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+.quote-form input:focus, .contact-form input:focus, .contact-form textarea:focus {
+    border: 1.5px solid #ffcc00;
+    box-shadow: 0 0 0 2px #ffecb3;
+    outline: none;
+}
+.quote-form button, .contact-form button {
+    background: linear-gradient(90deg, #ffcc00 60%, #ffd633 100%);
+    color: #003366;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(255,204,0,0.10);
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s, box-shadow 0.3s, color 0.3s;
+}
+.quote-form button:hover, .contact-form button:hover {
+    background: linear-gradient(90deg, #ffd633 60%, #ffcc00 100%);
+    color: #222;
+    box-shadow: 0 4px 16px rgba(255,204,0,0.18);
+}
+.quote-form button::after, .contact-form button::after {
+    content: '';
+    position: absolute;
+    left: var(--x, 50%);
+    top: var(--y, 50%);
+    width: 0;
+    height: 0;
+    background: rgba(255,255,255,0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s cubic-bezier(.4,2,.6,1), height 0.4s cubic-bezier(.4,2,.6,1);
+    z-index: 1;
+}
+.quote-form button:active::after, .contact-form button:active::after {
+    width: 200px;
+    height: 200px;
+}
+.services {
+    background: #fff;
+    padding: 60px 0;
+    border-radius: 32px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 32px rgba(0,51,102,0.04);
+    transition: box-shadow 0.3s;
+}
+.services h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.service-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+.service-item {
+    background: linear-gradient(120deg, #f1f5fb 80%, #e6f0fa 100%);
+    padding: 30px;
+    border-radius: 18px;
+    min-width: 240px;
+    box-shadow: 0 2px 16px rgba(0,51,102,0.06);
+    text-align: center;
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+.service-item:hover {
+    box-shadow: 0 8px 32px rgba(0,51,102,0.12);
+    transform: translateY(-6px) scale(1.03);
+}
+.advantages {
+    background: linear-gradient(120deg, #e6f0fa 80%, #f8f9fa 100%);
+    padding: 60px 0;
+    border-radius: 32px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 32px rgba(0,51,102,0.04);
+    transition: box-shadow 0.3s;
+}
+.advantage-item {
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+.advantage-item:hover {
+    box-shadow: 0 8px 32px rgba(0,51,102,0.12);
+    transform: translateY(-6px) scale(1.03);
+}
+.advantages h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.advantages ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+}
+.advantages li {
+    background: #fff;
+    padding: 20px 30px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+.reviews {
+    background: #fff;
+    padding: 60px 0;
+    border-radius: 32px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 32px rgba(0,51,102,0.04);
+    transition: box-shadow 0.3s;
+}
+.reviews h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.review-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+.review-item {
+    background: linear-gradient(120deg, #e6f0fa 80%, #f1f5fb 100%);
+    padding: 25px;
+    border-radius: 18px;
+    min-width: 240px;
+    font-style: italic;
+    box-shadow: 0 2px 16px rgba(0,51,102,0.06);
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+.review-item:hover {
+    box-shadow: 0 8px 32px rgba(0,51,102,0.12);
+    transform: translateY(-6px) scale(1.03);
+}
+.review-item span {
+    display: block;
+    margin-top: 10px;
+    font-style: normal;
+    font-weight: bold;
+    color: #003366;
+}
+.contact {
+    background: linear-gradient(120deg, #f1f5fb 80%, #e6f0fa 100%);
+    padding: 60px 0;
+    border-radius: 32px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 32px rgba(0,51,102,0.04);
+    transition: box-shadow 0.3s;
+}
+.contact h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 400px;
+    margin: 0 auto 20px auto;
+}
+.contact-form input,
+.contact-form textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+.contact-form button {
+    padding: 12px 0;
+    background: #003366;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.contact-form button:hover {
+    background: #00509e;
+}
+.contact-info {
+    text-align: center;
+    color: #003366;
+    font-size: 1.1rem;
+}
+footer {
+    background: linear-gradient(90deg, #003366 60%, #00509e 100%);
+    color: #fff;
+    text-align: center;
+    padding: 18px 0;
+    font-size: 1rem;
+    margin-top: 30px;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    box-shadow: 0 -4px 24px rgba(0,51,102,0.08);
+    transition: background 0.5s;
+}
+@media (max-width: 900px) {
+    .service-list, .advantages ul, .review-list {
+        flex-direction: column;
+        align-items: center;
+    }
+    .service-item, .review-item, .advantages li {
+        width: 90%;
+    }
+}
+
+/* Service area block */
+.service-area-map {
+    background: #000 !important;
+    color: #FFD600 !important;
+    border: 2px solid #FFD600;
+    box-shadow: 0 4px 32px rgba(255,214,0,0.10);
+}
+
+/* Veteran support block */
+.veteran-support {
+    background: #000 !important;
+    color: #FFD600 !important;
+    border: 2px solid #FFD600;
+    box-shadow: 0 4px 32px rgba(255,214,0,0.10);
+}
+
+/* Remove all border-radius for strict rectangular look */
+.hero,
+.quote-form,
+.quote-form input,
+.quote-form button,
+.contact-form,
+.contact-form input,
+.contact-form textarea,
+.contact-form button,
+.services,
+.service-item,
+.advantages,
+.advantage-item,
+.reviews,
+.review-item,
+.contact,
+.veteran-support,
+.service-area-map,
+footer,
+header {
+    border-radius: 0 !important;
+}
+
+img[alt="avatar"] {
+    border-radius: 0 !important;
+}

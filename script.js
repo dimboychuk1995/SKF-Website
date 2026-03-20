@@ -1,0 +1,65 @@
+// Section animation on scroll
+AOS.init({
+  duration: 900,
+  once: true
+});
+
+// Smooth scroll for nav links
+const navLinks = document.querySelectorAll('nav a');
+navLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      document.querySelector(href).scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+  });
+});
+
+// Button ripple effect
+const buttons = document.querySelectorAll('button');
+buttons.forEach(btn => {
+  btn.addEventListener('mousemove', function(e) {
+    const rect = btn.getBoundingClientRect();
+    btn.style.setProperty('--x', e.clientX - rect.left + 'px');
+    btn.style.setProperty('--y', e.clientY - rect.top + 'px');
+  });
+});
+
+// Google Reviews block (load from reviews.json)
+fetch('reviews.json')
+  .then(res => res.json())
+  .then(reviews => {
+    const reviewsBlock = document.getElementById('google-reviews');
+    if (!reviewsBlock) return;
+    // Show only 8 reviews at once, randomize
+    const shuffled = reviews.sort(() => 0.5 - Math.random());
+    const shown = shuffled.slice(0, 8);
+    shown.forEach(r => {
+      const stars = '<span style="color:#FFD600;font-size:1.2em;">' + '★'.repeat(r.rating) + '<span style="color:#e0e0e0;">' + '★'.repeat(5 - r.rating) + '</span></span>';
+      const date = new Date(r.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
+      const item = document.createElement('div');
+      item.className = 'col-md-6 col-lg-4';
+      item.innerHTML = `
+        <div class="review-item shadow-sm mb-4" style="background:#fff; color:#222; border-radius:18px; min-height:160px; box-shadow:0 2px 16px rgba(60,60,60,0.10); padding: 1.5rem; display:flex; flex-direction:column; justify-content:space-between;">
+          <div class="d-flex align-items-center mb-2">
+            <img src="https://ui-avatars.com/api/?name=${encodeURIComponent(r.author)}&background=FFD600&color=111&size=40&rounded=true" alt="avatar" class="me-3" style="width:40px;height:40px;border-radius:50%;border:2px solid #FFD600;">
+            <div>
+              <span class="fw-bold" style="color:#222;">${r.author}</span><br>
+              <span class="text-secondary" style="font-size:0.95em;">${date}</span>
+            </div>
+          </div>
+          <div class="mb-2">${stars}</div>
+          <div style="font-size:1.05em;">${r.text}</div>
+        </div>
+      `;
+      reviewsBlock.appendChild(item);
+    });
+    // Add Google logo
+    const logo = document.createElement('div');
+    logo.className = 'text-center w-100';
+    logo.innerHTML = '<img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google" style="height:28px; margin-top:10px;">';
+    reviewsBlock.appendChild(logo);
+  });

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKF Trucking</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- AOS CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body style="font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif; background: #f8f9fa;">
+    <header class="shadow-sm" data-aos="fade-down">
+        <div class="container d-flex justify-content-between align-items-center py-3">
+            <div class="logo">SKF Trucking</div>
+            <nav>
+                <ul class="nav">
+                    <li class="nav-item"><a class="nav-link" href="#quote">Get a Quote</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#service-area">Service Area</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#veterans">Veteran Support</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#reviews">Reviews</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section class="hero position-relative overflow-hidden" data-aos="fade-up" id="quote">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-3">Reliable Nationwide Car Shipping</h1>
+            <p class="lead mb-4">Fast, safe, and affordable auto transport across the USA</p>
+            <form class="quote-form bg-white bg-opacity-75 rounded-4 shadow p-4 mx-auto" style="max-width: 500px;">
+                <input type="text" class="form-control mb-2" placeholder="Pickup Location" required>
+                <input type="text" class="form-control mb-2" placeholder="Delivery Location" required>
+                <input type="text" class="form-control mb-3" placeholder="Car Make & Model" required>
+                <button type="submit" class="btn btn-warning w-100 fw-bold position-relative overflow-hidden">Get a Quote</button>
+            </form>
+        </div>
+        <div class="hero-overlay position-absolute top-0 start-0 w-100 h-100" style="pointer-events:none;"></div>
+    </section>
+
+    <!-- Service Area Block -->
+    <section id="service-area" class="services py-5" data-aos="fade-up">
+        <div class="container">
+            <h2 class="text-center mb-4">Where We Work</h2>
+            <div class="row justify-content-center align-items-stretch mb-4">
+                <div class="col-lg-6 d-flex align-items-center">
+                    <div class="service-area-map bg-dark text-white shadow p-4 w-100 h-100 d-flex flex-column justify-content-center">
+                        <div class="mb-3">
+                            <span class="badge bg-warning text-dark fs-5 mx-2">IL</span>
+                            <span class="badge bg-warning text-dark fs-5 mx-2">WI</span>
+                            <span class="badge bg-warning text-dark fs-5 mx-2">IA</span>
+                            <span class="badge bg-warning text-dark fs-5 mx-2">MI</span>
+                            <span class="badge bg-warning text-dark fs-5 mx-2">OH</span>
+                            <span class="badge bg-warning text-dark fs-5 mx-2">IN</span>
+                        </div>
+                        <p class="mb-0">We provide fast and secure trucking in Illinois, Wisconsin, Iowa, Michigan, Ohio, and Indiana.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="h-100 w-100 d-flex align-items-center justify-content-center" style="min-height:400px;">
+                        <div id="skf-map" style="width:100%;height:400px;min-width:320px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Veteran Support Block -->
+    <section id="veterans" class="py-5" data-aos="fade-up">
+        <div class="container wide-container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-md-10">
+                    <div class="veteran-support bg-black text-warning shadow p-4 text-center">
+                        <h2 class="mb-3"><i class="bi bi-award-fill me-2"></i>We Support Veterans</h2>
+                        <p class="lead mb-2">SKF Trucking is proud to support our veterans and military families.</p>
+                        <p class="mb-0">Ask about our special discounts for veterans and active duty military. Thank you for your service!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Service Types Block -->
+    <section id="services" class="services py-5" data-aos="fade-up">
+        <div class="container">
+            <h2 class="text-center mb-5">Our Services</h2>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-4">
+                    <div class="service-item h-100 p-4 rounded-4 shadow-sm bg-light text-center" data-aos="zoom-in" data-aos-delay="100">
+                        <h3>Open Carrier</h3>
+                        <p>Cost-effective way to ship your car long distance.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-item h-100 p-4 rounded-4 shadow-sm bg-light text-center" data-aos="zoom-in" data-aos-delay="200">
+                        <h3>Enclosed Carrier</h3>
+                        <p>Maximum protection for luxury and classic vehicles.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-item h-100 p-4 rounded-4 shadow-sm bg-light text-center" data-aos="zoom-in" data-aos-delay="300">
+                        <h3>Door-to-Door Delivery</h3>
+                        <p>We pick up and deliver your car at your address.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="advantages" class="advantages py-5" data-aos="fade-up">
+        <div class="container">
+            <h2 class="text-center mb-4">Why Choose Us</h2>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-3 col-6">
+                    <div class="advantage-item bg-white rounded-4 shadow-sm p-3 text-center h-100" data-aos="flip-left" data-aos-delay="100">
+                        <span class="display-6 text-warning mb-2 d-block"><i class="bi bi-shield-check"></i></span>
+                        <div>Full Insurance Coverage</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="advantage-item bg-white rounded-4 shadow-sm p-3 text-center h-100" data-aos="flip-left" data-aos-delay="200">
+                        <span class="display-6 text-warning mb-2 d-block"><i class="bi bi-person-badge"></i></span>
+                        <div>Experienced Drivers</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="advantage-item bg-white rounded-4 shadow-sm p-3 text-center h-100" data-aos="flip-left" data-aos-delay="300">
+                        <span class="display-6 text-warning mb-2 d-block"><i class="bi bi-headset"></i></span>
+                        <div>24/7 Support</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="advantage-item bg-white rounded-4 shadow-sm p-3 text-center h-100" data-aos="flip-left" data-aos-delay="400">
+                        <span class="display-6 text-warning mb-2 d-block"><i class="bi bi-cash-coin"></i></span>
+                        <div>Flexible Rates</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="reviews" class="reviews py-5" data-aos="fade-up">
+        <div class="container">
+            <h2 class="text-center mb-4">Customer Reviews</h2>
+            <div id="google-reviews" class="row g-4 justify-content-center">
+                <!-- Reviews will be loaded here by script.js -->
+            </div>
+            <div class="text-center mt-3">
+                <span class="text-secondary">Powered by Google Reviews API</span>
+            </div>
+        </div>
+    </section>
+    <section id="contact" class="contact py-5" data-aos="fade-up">
+        <div class="container">
+            <h2 class="text-center mb-4">Contact Us</h2>
+            <form class="contact-form bg-white bg-opacity-75 rounded-4 shadow p-4 mx-auto mb-4" style="max-width: 500px;">
+                <input type="text" class="form-control mb-2" placeholder="Your Name" required>
+                <input type="email" class="form-control mb-2" placeholder="Your Email" required>
+                <textarea class="form-control mb-3" placeholder="Your Message" required></textarea>
+                <button type="submit" class="btn btn-primary w-100 fw-bold position-relative overflow-hidden">Send</button>
+            </form>
+            <div class="contact-info text-center">
+                <p class="mb-1">Phone: <a href="tel:+19991234567" class="text-decoration-none text-dark">+1 (999) 123-4567</a></p>
+                <p>Email: <a href="mailto:info@skftrucking.com" class="text-decoration-none text-dark">info@skftrucking.com</a></p>
+            </div>
+        </div>
+    </section>
+    <footer class="mt-5" data-aos="fade-up">
+        <div class="container">
+            <p class="mb-0">© 2026 SKF Trucking. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+    <!-- Google Maps JS API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYaEO6La-OE4cHMqXUK_sRgEHScmOFr0Q&callback=initSKFMap" async defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <!-- AOS JS -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+        <!-- Custom JS -->
+        <script src="script.js"></script>
+        <script>
+        function initSKFMap() {
+            const cities = [
+                { name: 'Detroit, MI', pos: { lat: 42.331427, lng: -83.0457538 } },
+                { name: 'Chicago, IL', pos: { lat: 41.8781136, lng: -87.6297982 } },
+                { name: 'Milwaukee, WI', pos: { lat: 43.0389025, lng: -87.9064736 } },
+                { name: 'Addison, IL', pos: { lat: 41.931696, lng: -88.0017283 } },
+                { name: 'Indianapolis, IN', pos: { lat: 39.768403, lng: -86.158068 } },
+                { name: 'Cleveland, OH', pos: { lat: 41.49932, lng: -81.6943605 } }
+            ];
+            const map = new google.maps.Map(document.getElementById('skf-map'), {
+                zoom: 6,
+                center: { lat: 41.8, lng: -85.5 },
+                mapTypeId: 'roadmap',
+                language: 'en',
+                styles: [
+                    { elementType: 'geometry', stylers: [{ color: '#f5f5f5' }] },
+                    { elementType: 'labels.text.stroke', stylers: [{ color: '#ffffff' }] },
+                    { elementType: 'labels.text.fill', stylers: [{ color: '#222' }] },
+                    { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#e1eaff' }] },
+                    { featureType: 'road', elementType: 'geometry', stylers: [{ color: '#fffbe6' }] },
+                ]
+            });
+            // Markers
+            cities.forEach(city => {
+                new google.maps.Marker({
+                    position: city.pos,
+                    map,
+                    title: city.name,
+                    icon: {
+                        path: google.maps.SymbolPath.CIRCLE,
+                        scale: 7,
+                        fillColor: '#FFD600',
+                        fillOpacity: 1,
+                        strokeColor: '#222',
+                        strokeWeight: 2
+                    }
+                });
+            });
+            // Routes from Detroit to each city
+            const detroit = cities[0].pos;
+            const directionsService = new google.maps.DirectionsService();
+            const directionsRendererOptions = {
+                suppressMarkers: true,
+                preserveViewport: true,
+                polylineOptions: {
+                    strokeColor: '#FFD600',
+                    strokeWeight: 4,
+                    strokeOpacity: 0.9
+                }
+            };
+            for (let i = 1; i < cities.length; i++) {
+                const renderer = new google.maps.DirectionsRenderer(directionsRendererOptions);
+                renderer.setMap(map);
+                directionsService.route({
+                    origin: detroit,
+                    destination: cities[i].pos,
+                    travelMode: google.maps.TravelMode.DRIVING
+                }, (result, status) => {
+                    if (status === 'OK') {
+                        renderer.setDirections(result);
+                    }
+                });
+            }
+        }
+        </script>
+        <script>AOS.init();</script>
+</html>
