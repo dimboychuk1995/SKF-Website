@@ -618,22 +618,278 @@ header.scrolled {
 .reviews h2 {
     text-align: center;
     margin-bottom: 50px;
-    font-size: 2.2rem;
+    font-size: 2.5rem;
+    font-weight: 800;
     color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
-.review-item {
+.reviews-carousel-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.reviews-carousel {
+    overflow: hidden;
+    flex: 1;
+}
+
+.reviews-track {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.5s ease;
+}
+
+.review-card {
+    flex: 0 0 calc(20% - 16px);
+    min-width: 220px;
     background: var(--white);
-    padding: 25px;
-    border-radius: 16px;
+    border-radius: 12px;
+    padding: 25px 20px;
+    text-align: left;
     box-shadow: var(--shadow-sm);
-    transition: var(--transition);
-    border-left: 4px solid var(--accent);
 }
 
-.review-item:hover {
-    box-shadow: var(--shadow-md);
-    transform: translateY(-5px);
+.review-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.review-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.review-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.review-author {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #333;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.review-date {
+    font-size: 0.8rem;
+    color: #999;
+    font-weight: 400;
+}
+
+.review-stars {
+    color: #ff5722;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+.review-tag {
+    color: #666;
+    font-size: 0.85rem;
+    font-style: italic;
+    margin-bottom: 12px;
+}
+
+.review-text {
+    color: #555;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.carousel-arrow {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: var(--primary);
+    border: none;
+    color: var(--white);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.carousel-arrow:hover {
+    background: var(--primary-light);
+    transform: scale(1.05);
+}
+
+.carousel-arrow i {
+    font-size: 1.2rem;
+}
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 30px;
+}
+
+.carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ccc;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-dot.active {
+    background: var(--primary);
+}
+
+/* Trust Section inside Reviews */
+.trust-section {
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.trust-title {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: 30px;
+}
+
+.trust-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.trust-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.logo-haulex {
+    color: #1a1a2e;
+    font-size: 1.8rem;
+    font-weight: 800;
+}
+
+.logo-transport {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #333;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.bbb-badge {
+    display: flex;
+    align-items: center;
+    background: #005a9c;
+    border-radius: 6px;
+    padding: 8px 12px;
+    gap: 8px;
+}
+
+.bbb-text {
+    color: white;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.bbb-rating {
+    background: #FFD600;
+    color: #005a9c;
+    font-weight: 800;
+    font-size: 1rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 1.1;
+}
+
+.bbb-rating small {
+    font-size: 0.6rem;
+    font-weight: 600;
+}
+
+.logo-trustpilot {
+    color: #191919;
+    font-size: 1.6rem;
+}
+
+.logo-google {
+    font-size: 1.8rem;
+    font-weight: 500;
+    font-family: 'Product Sans', Arial, sans-serif;
+}
+
+.logo-yelp {
+    color: #1a1a1a;
+    font-size: 1.8rem;
+    font-weight: 800;
+    font-style: italic;
+}
+
+@media (max-width: 1200px) {
+    .review-card {
+        flex: 0 0 calc(25% - 15px);
+    }
+}
+
+@media (max-width: 992px) {
+    .review-card {
+        flex: 0 0 calc(33.333% - 14px);
+    }
+}
+
+@media (max-width: 768px) {
+    .review-card {
+        flex: 0 0 calc(50% - 10px);
+    }
+    .reviews h2 {
+        font-size: 1.8rem;
+    }
+    .trust-logos {
+        gap: 25px;
+    }
+    .logo-text {
+        font-size: 1.2rem;
+    }
+    .trust-title {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .review-card {
+        flex: 0 0 100%;
+    }
+    .carousel-arrow {
+        width: 35px;
+        height: 35px;
+    }
 }
 
 /* ===== Contact Section ===== */

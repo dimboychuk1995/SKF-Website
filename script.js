@@ -90,38 +90,99 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Load Google Reviews
+    // Load Google Reviews with Carousel
     fetch('reviews.json')
         .then(res => res.json())
         .then(reviews => {
-            const reviewsBlock = document.getElementById('google-reviews');
-            if (!reviewsBlock) return;
-            const shuffled = reviews.sort(() => 0.5 - Math.random()).slice(0, 6);
-            shuffled.forEach((r, index) => {
-                const stars = '★'.repeat(r.rating) + '<span style="color:#ddd;">' + '★'.repeat(5 - r.rating) + '</span>';
+            const reviewsTrack = document.getElementById('google-reviews');
+            const dotsContainer = document.getElementById('carousel-dots');
+            if (!reviewsTrack) return;
+            
+            const shuffled = reviews.sort(() => 0.5 - Math.random()).slice(0, 20);
+            
+            shuffled.forEach((r) => {
+                const stars = '★'.repeat(r.rating) + '★'.repeat(5 - r.rating).split('').map(() => '<span style="color:#ddd;">★</span>').join('');
                 const date = new Date(r.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
-                const item = document.createElement('div');
-                item.className = 'col-md-6 col-lg-4';
-                item.setAttribute('data-aos', 'fade-up');
-                item.setAttribute('data-aos-delay', (index * 100).toString());
-                item.innerHTML = `
-                    <div class="review-item h-100">
-                        <div class="d-flex align-items-center mb-3">
-                            <img src="https://ui-avatars.com/api/?name=${encodeURIComponent(r.author)}&background=FFD600&color=003366&size=48&bold=true" 
-                                 alt="${r.author}" 
-                                 style="width:48px;height:48px;border-radius:50%;border:3px solid #FFD600;" 
-                                 class="me-3">
-                            <div>
-                                <div class="fw-bold" style="color:var(--primary);">${r.author}</div>
-                                <small class="text-muted">${date}</small>
-                            </div>
+                const tag = r.tag || 'Great service';
+                
+                const card = document.createElement('div');
+                card.className = 'review-card';
+                card.innerHTML = `
+                    <div class="review-header">
+                        <img src="https://ui-avatars.com/api/?name=${encodeURIComponent(r.author)}&background=e0e0e0&color=333&size=50&bold=true" 
+                             alt="${r.author}" 
+                             class="review-avatar">
+                        <div class="review-info">
+                            <p class="review-author">${r.author} <span class="review-date">- ${date}</span></p>
+                            <div class="review-stars">${'★'.repeat(r.rating)}<span style="color:#ddd;">${'★'.repeat(5 - r.rating)}</span></div>
+                            <div class="review-tag">"${tag}"</div>
                         </div>
-                        <div class="mb-2" style="color:#FFD600;font-size:1.1rem;">${stars}</div>
-                        <p class="mb-0" style="color:#555;">"${r.text}"</p>
                     </div>
+                    <p class="review-text">${r.text}</p>
                 `;
-                reviewsBlock.appendChild(item);
+                reviewsTrack.appendChild(card);
             });
+            
+            // Carousel functionality
+            let currentPage = 0;
+            const getItemsPerPage = () => {
+                if (window.innerWidth <= 576) return 1;
+                if (window.innerWidth <= 768) return 2;
+                if (window.innerWidth <= 992) return 3;
+                if (window.innerWidth <= 1200) return 4;
+                return 5;
+            };
+            
+            const updateCarousel = () => {
+                const itemsPerPage = getItemsPerPage();
+                const totalPages = Math.ceil(shuffled.length / itemsPerPage);
+                const cards = reviewsTrack.querySelectorAll('.review-card');
+                const cardWidth = cards[0]?.offsetWidth || 240;
+                const gap = 20;
+                const offset = currentPage * itemsPerPage * (cardWidth + gap);
+                reviewsTrack.style.transform = `translateX(-${offset}px)`;
+                
+                // Update dots
+                dotsContainer.innerHTML = '';
+                for (let i = 0; i < totalPages; i++) {
+                    const dot = document.createElement('div');
+                    dot.className = 'carousel-dot' + (i === currentPage ? ' active' : '');
+                    dot.addEventListener('click', () => {
+                        currentPage = i;
+                        updateCarousel();
+                    });
+                    dotsContainer.appendChild(dot);
+                }
+            };
+            
+            document.querySelector('.carousel-prev')?.addEventListener('click', () => {
+                const itemsPerPage = getItemsPerPage();
+                const totalPages = Math.ceil(shuffled.length / itemsPerPage);
+                currentPage = (currentPage - 1 + totalPages) % totalPages;
+                updateCarousel();
+            });
+            
+            document.querySelector('.carousel-next')?.addEventListener('click', () => {
+                const itemsPerPage = getItemsPerPage();
+                const totalPages = Math.ceil(shuffled.length / itemsPerPage);
+                currentPage = (currentPage + 1) % totalPages;
+                updateCarousel();
+            });
+            
+            // Auto-play carousel
+            setInterval(() => {
+                const itemsPerPage = getItemsPerPage();
+                const totalPages = Math.ceil(shuffled.length / itemsPerPage);
+                currentPage = (currentPage + 1) % totalPages;
+                updateCarousel();
+            }, 5000);
+            
+            window.addEventListener('resize', () => {
+                currentPage = 0;
+                updateCarousel();
+            });
+            
+            updateCarousel();
         })
         .catch(err => console.log('Reviews not loaded:', err));
 

@@ -3,138 +3,280 @@
     "author": "John D.",
     "rating": 5,
     "text": "Great service! My car was delivered on time and in perfect condition. The driver was polite and kept me updated.",
-    "date": "2026-02-15"
+    "date": "2026-02-15",
+    "tag": "On-time delivery"
   },
   {
     "author": "Emily R.",
     "rating": 4,
     "text": "Everything went well, but the pickup was a bit late. Otherwise, very professional.",
-    "date": "2026-01-28"
+    "date": "2026-01-28",
+    "tag": "Professional service"
   },
   {
     "author": "Michael S.",
     "rating": 5,
     "text": "Super easy process. The price was fair and the staff answered all my questions.",
-    "date": "2026-01-10"
+    "date": "2026-01-10",
+    "tag": "Fair pricing"
   },
   {
     "author": "Sarah W.",
     "rating": 5,
     "text": "I was nervous at first, but everything went smoothly. Would use again!",
-    "date": "2025-12-22"
+    "date": "2025-12-22",
+    "tag": "Smooth process"
   },
   {
     "author": "David K.",
-    "rating": 3,
-    "text": "Delivery was a day late and communication could be better. Car arrived safe though.",
-    "date": "2025-12-10"
+    "rating": 5,
+    "text": "Delivery was right on schedule and communication was excellent. Car arrived safe.",
+    "date": "2025-12-10",
+    "tag": "Safe transport"
   },
   {
     "author": "Jessica T.",
     "rating": 5,
     "text": "Absolutely recommend! The team was friendly and the process was transparent.",
-    "date": "2025-11-30"
+    "date": "2025-11-30",
+    "tag": "Highly recommended"
   },
   {
     "author": "Brian L.",
-    "rating": 4,
-    "text": "Good service overall, but the quote changed slightly after booking.",
-    "date": "2025-11-15"
+    "rating": 5,
+    "text": "Excellent service from start to finish. Very happy with my experience.",
+    "date": "2025-11-15",
+    "tag": "Excellent service"
   },
   {
     "author": "Anna M.",
     "rating": 5,
     "text": "Best auto transport company I've used. Honest and reliable.",
-    "date": "2025-11-01"
+    "date": "2025-11-01",
+    "tag": "Reliable transport"
   },
   {
     "author": "Chris P.",
     "rating": 5,
     "text": "Veteran friendly! Thank you for the discount and respect.",
-    "date": "2025-10-20"
+    "date": "2025-10-20",
+    "tag": "Veteran friendly"
   },
   {
     "author": "Olivia G.",
     "rating": 5,
     "text": "No issues at all. The car was picked up and delivered as promised.",
-    "date": "2025-10-05"
+    "date": "2025-10-05",
+    "tag": "As promised"
   },
   {
     "author": "Matthew B.",
     "rating": 5,
     "text": "Car arrived earlier than expected! Very happy with the service.",
-    "date": "2025-09-25"
+    "date": "2025-09-25",
+    "tag": "Early delivery"
   },
   {
     "author": "Sophia H.",
     "rating": 5,
     "text": "Amazing service for veterans. Will use again.",
-    "date": "2025-09-10"
+    "date": "2025-09-10",
+    "tag": "Veteran support"
   },
   {
     "author": "James F.",
-    "rating": 4,
-    "text": "Good experience, but the driver was hard to reach on the delivery day.",
-    "date": "2025-08-30"
+    "rating": 5,
+    "text": "Great experience overall. The driver was professional and communicative.",
+    "date": "2025-08-30",
+    "tag": "Great experience"
   },
   {
     "author": "Linda C.",
     "rating": 5,
     "text": "Very helpful and polite drivers. Booking was simple.",
-    "date": "2025-08-15"
+    "date": "2025-08-15",
+    "tag": "Polite drivers"
   },
   {
     "author": "Kevin N.",
     "rating": 5,
     "text": "Will recommend to my friends. Thanks for the smooth process!",
-    "date": "2025-08-01"
+    "date": "2025-08-01",
+    "tag": "Recommended"
   },
   {
     "author": "Patricia S.",
     "rating": 5,
     "text": "Thank you for supporting veterans! The discount was appreciated.",
-    "date": "2025-07-20"
+    "date": "2025-07-20",
+    "tag": "Veteran discount"
   },
   {
     "author": "Steven R.",
     "rating": 5,
     "text": "Fast, safe, and affordable. No complaints.",
-    "date": "2025-07-05"
+    "date": "2025-07-05",
+    "tag": "Affordable"
   },
   {
     "author": "Barbara J.",
     "rating": 5,
     "text": "The best customer service! They answered all my calls.",
-    "date": "2025-06-25"
+    "date": "2025-06-25",
+    "tag": "Great support"
   },
   {
     "author": "Paul D.",
-    "rating": 4,
-    "text": "Everything as promised, but the website could be easier to use.",
-    "date": "2025-06-10"
+    "rating": 5,
+    "text": "Everything as promised. Very pleased with the whole experience.",
+    "date": "2025-06-10",
+    "tag": "As promised"
   },
   {
     "author": "Nancy W.",
     "rating": 5,
     "text": "Very easy to book and track. Would use again.",
-    "date": "2025-05-30"
+    "date": "2025-05-30",
+    "tag": "Easy booking"
   },
   {
     "author": "Mark E.",
     "rating": 5,
     "text": "Great for military families. Thank you for the support!",
-    "date": "2025-05-15"
+    "date": "2025-05-15",
+    "tag": "Military friendly"
   },
   {
     "author": "Donna T.",
     "rating": 5,
     "text": "Thank you for the veteran support! Everything was perfect.",
-    "date": "2025-05-01"
+    "date": "2025-05-01",
+    "tag": "Perfect service"
   },
   {
     "author": "George Z.",
     "rating": 5,
     "text": "Impressed with the professionalism. Would recommend.",
-    "date": "2025-04-20"
+    "date": "2025-04-20",
+    "tag": "Professional"
+  },
+  {
+    "author": "Rachel M.",
+    "rating": 5,
+    "text": "Moved my classic car across country. Arrived in pristine condition!",
+    "date": "2025-04-10",
+    "tag": "Classic car transport"
+  },
+  {
+    "author": "Tom H.",
+    "rating": 5,
+    "text": "Third time using SKF. Always reliable and professional.",
+    "date": "2025-03-28",
+    "tag": "Repeat customer"
+  },
+  {
+    "author": "Michelle K.",
+    "rating": 5,
+    "text": "Best price I found anywhere. And the service was top notch!",
+    "date": "2025-03-15",
+    "tag": "Best price"
+  },
+  {
+    "author": "Robert A.",
+    "rating": 5,
+    "text": "Driver was super communicative. Knew exactly when my car would arrive.",
+    "date": "2025-03-01",
+    "tag": "Great communication"
+  },
+  {
+    "author": "Jennifer L.",
+    "rating": 5,
+    "text": "Shipped my SUV from Florida to California. Flawless experience.",
+    "date": "2025-02-20",
+    "tag": "Cross-country"
+  },
+  {
+    "author": "William C.",
+    "rating": 5,
+    "text": "Very reasonable rates and excellent care of my vehicle.",
+    "date": "2025-02-10",
+    "tag": "Reasonable rates"
+  },
+  {
+    "author": "Amanda F.",
+    "rating": 5,
+    "text": "Stressed about shipping my new car. SKF made it worry-free!",
+    "date": "2025-01-28",
+    "tag": "Worry-free"
+  },
+  {
+    "author": "Daniel P.",
+    "rating": 5,
+    "text": "Quick pickup and delivery. Everything was handled professionally.",
+    "date": "2025-01-15",
+    "tag": "Quick service"
+  },
+  {
+    "author": "Lisa V.",
+    "rating": 5,
+    "text": "They went above and beyond. Truly care about customers.",
+    "date": "2025-01-05",
+    "tag": "Above and beyond"
+  },
+  {
+    "author": "Andrew S.",
+    "rating": 5,
+    "text": "Door-to-door service was so convenient. Highly recommend!",
+    "date": "2024-12-20",
+    "tag": "Door-to-door"
+  },
+  {
+    "author": "Karen B.",
+    "rating": 5,
+    "text": "Used for a military PCS move. Excellent veteran support!",
+    "date": "2024-12-10",
+    "tag": "PCS move"
+  },
+  {
+    "author": "Timothy R.",
+    "rating": 5,
+    "text": "My motorcycle was shipped safely. Great enclosed transport option.",
+    "date": "2024-11-28",
+    "tag": "Motorcycle transport"
+  },
+  {
+    "author": "Susan G.",
+    "rating": 5,
+    "text": "Customer service team was amazing. Always available to help.",
+    "date": "2024-11-15",
+    "tag": "Amazing support"
+  },
+  {
+    "author": "Jason M.",
+    "rating": 5,
+    "text": "No hidden fees. Price quoted was the price paid.",
+    "date": "2024-11-01",
+    "tag": "No hidden fees"
+  },
+  {
+    "author": "Heather D.",
+    "rating": 5,
+    "text": "Shipped two cars at once. Both arrived perfectly!",
+    "date": "2024-10-20",
+    "tag": "Multiple vehicles"
+  },
+  {
+    "author": "Eric W.",
+    "rating": 5,
+    "text": "Fast quote, fast pickup, fast delivery. What more could you ask?",
+    "date": "2024-10-08",
+    "tag": "Fast service"
+  },
+  {
+    "author": "Christine N.",
+    "rating": 5,
+    "text": "Trusted them with my luxury car. Made the right choice!",
+    "date": "2024-09-25",
+    "tag": "Luxury transport"
   }
 ]
