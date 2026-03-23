@@ -32,14 +32,61 @@
             <h1 class="display-4 fw-bold mb-3">Reliable Nationwide Car Shipping</h1>
             <p class="lead mb-4">Fast, safe, and affordable auto transport across the USA</p>
             <form class="quote-form bg-white bg-opacity-75 rounded-4 shadow p-4 mx-auto" style="max-width: 500px;">
-                <input type="text" class="form-control mb-2" placeholder="Pickup Location" required>
-                <input type="text" class="form-control mb-2" placeholder="Delivery Location" required>
-                <input type="text" class="form-control mb-3" placeholder="Car Make & Model" required>
-                <button type="submit" class="btn btn-warning w-100 fw-bold position-relative overflow-hidden">Get a Quote</button>
+                                <input id="pickup-location" type="text" class="form-control mb-2" placeholder="Pick Up Location (City or ZIP)" autocomplete="off" required>
+                                <input id="delivery-location" type="text" class="form-control mb-2" placeholder="Delivery Location (City or ZIP)" autocomplete="off" required>
+                                <select id="car-make" class="form-select mb-2" required>
+                                    <option value="">Select Make</option>
+                                </select>
+                                <input id="car-model" type="text" class="form-control mb-2" placeholder="Model" required>
+                                <input id="car-year" type="number" class="form-control mb-2" placeholder="Year" min="1950" max="2026" required>
+                                <div class="form-check form-switch mb-2">
+                                    <input class="form-check-input" type="checkbox" id="operated-switch" checked>
+                                    <label class="form-check-label" for="operated-switch">Operated</label>
+                                </div>
+                                <input id="ship-date" type="date" class="form-control mb-3" required>
+                                <button type="submit" class="btn btn-warning w-100 fw-bold position-relative overflow-hidden">Get a Quote</button>
             </form>
         </div>
         <div class="hero-overlay position-absolute top-0 start-0 w-100 h-100" style="pointer-events:none;"></div>
-    </section>
+
+        </section>
+
+        <!-- Car Hauler Photo Carousel -->
+        <section class="py-4" id="carhauler-gallery" data-aos="fade-up">
+            <div class="container">
+                <h2 class="text-center mb-4">Car Hauler Gallery</h2>
+                <div id="carhaulerCarousel" class="carousel slide mx-auto" data-bs-ride="carousel" style="max-width: 700px;">
+                    <div class="carousel-inner rounded-4 shadow">
+                        <div class="carousel-item active">
+                            <img src="images/20171221_162839.jpg" class="d-block w-100" alt="Car Hauler 1" style="object-fit:cover;max-height:420px;">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/53-foot-Next-Generation-Anniversary-Edition-5-Car-Hauler_0003_Photo-Nov-19-12-35-35-PM.jpg" class="d-block w-100" alt="Car Hauler 2" style="object-fit:cover;max-height:420px;">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/four-car-trailers-mobile-v1.webp" class="d-block w-100" alt="Car Hauler 3" style="object-fit:cover;max-height:420px;">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/images.jfif" class="d-block w-100" alt="Car Hauler 4" style="object-fit:cover;max-height:420px;">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/Jack-Cooper-Car-Haul-1200.jpg" class="d-block w-100" alt="Car Hauler 5" style="object-fit:cover;max-height:420px;">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/three-car-trailers-mobile-v1.webp" class="d-block w-100" alt="Car Hauler 6" style="object-fit:cover;max-height:420px;">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carhaulerCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carhaulerCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </section>
 
     <!-- Service Area Block -->
     <section id="service-area" class="services py-5" data-aos="fade-up">
@@ -171,24 +218,24 @@
         </div>
     </footer>
 </body>
-    <!-- Google Maps JS API -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYaEO6La-OE4cHMqXUK_sRgEHScmOFr0Q&libraries=routes&callback=initSKFMap&language=en" async defer></script>
+    <!-- Google Places API for autocomplete (moved here) -->
+    <!-- Google Maps JS API: single load for both map and autocomplete -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYaEO6La-OE4cHMqXUK_sRgEHScmOFr0Q&libraries=places,routes&callback=initSKFMapAndAutocomplete&language=en" async defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <!-- AOS JS -->
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-        <!-- Custom JS -->
-        <script src="script.js"></script>
-        <script>
-        async function initSKFMap() {
-            const cities = [
-                { name: 'Detroit, MI', pos: { lat: 42.331427, lng: -83.0457538 } },
-                { name: 'Chicago, IL', pos: { lat: 41.8781136, lng: -87.6297982 } },
-                { name: 'Milwaukee, WI', pos: { lat: 43.0389025, lng: -87.9064736 } },
-                { name: 'Addison, IL', pos: { lat: 41.931696, lng: -88.0017283 } },
-                { name: 'Indianapolis, IN', pos: { lat: 39.768403, lng: -86.158068 } },
-                { name: 'Cleveland, OH', pos: { lat: 41.49932, lng: -81.6943605 } }
+    <script src="script.js"></script>
+    <script>
+    function initSKFMap() {
+        const cities = [
+            { name: 'Detroit, MI', pos: { lat: 42.331427, lng: -83.0457538 } },
+            { name: 'Chicago, IL', pos: { lat: 41.8781136, lng: -87.6297982 } },
+            { name: 'Milwaukee, WI', pos: { lat: 43.0389025, lng: -87.9064736 } },
+            { name: 'Addison, IL', pos: { lat: 41.931696, lng: -88.0017283 } },
+            { name: 'Indianapolis, IN', pos: { lat: 39.768403, lng: -86.158068 } },
+            { name: 'Cleveland, OH', pos: { lat: 41.49932, lng: -81.6943605 } }
             ];
             const map = new google.maps.Map(document.getElementById('skf-map'), {
                 zoom: 6,
@@ -202,8 +249,7 @@
                     { featureType: 'road', elementType: 'geometry', stylers: [{ color: '#fffbe6' }] },
                 ]
             });
-            // Markers
-            // Use AdvancedMarkerElement for modern markers
+            // Markers (AdvancedMarkerElement or fallback to Marker)
             if (google.maps.marker && google.maps.marker.AdvancedMarkerElement) {
                 cities.forEach(city => {
                     new google.maps.marker.AdvancedMarkerElement({
@@ -246,8 +292,8 @@
                 for (let i = 1; i < cities.length; i++) {
                     const destination = cities[i];
                     const request = {
-                        origin: { location: { latLng: detroit.pos } },
-                        destination: { location: { latLng: destination.pos } },
+                        origin: detroit.pos,
+                        destination: destination.pos,
                         travelMode: 'DRIVE',
                         routingPreference: 'TRAFFIC_AWARE',
                         computeAlternativeRoutes: false,
@@ -260,7 +306,7 @@
                         travelMode: request.travelMode,
                         routingPreference: request.routingPreference,
                         computeAlternativeRoutes: request.computeAlternativeRoutes,
-                        languageCode: request.languageCode,
+                        language: request.language,
                         units: request.units
                     }).then(response => {
                         if (response && response.routes && response.routes.length > 0) {
@@ -285,5 +331,5 @@
             }
         }
         </script>
-        <script>AOS.init();</script>
+        <!-- AOS.init() already called in script.js -->
 </html>

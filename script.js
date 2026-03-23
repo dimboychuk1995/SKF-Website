@@ -1,3 +1,40 @@
+// --- Quote Form Logic ---
+// --- Quote Form Logic ---
+function initSKFMapAndAutocomplete() {
+  // Google Places Autocomplete for Pickup/Delivery (classic, with warning)
+  const options = { types: ['(cities)'], componentRestrictions: { country: 'us' } };
+  const pickupInput = document.getElementById('pickup-location');
+  const deliveryInput = document.getElementById('delivery-location');
+  if (pickupInput && window.google && google.maps.places) new google.maps.places.Autocomplete(pickupInput, options);
+  if (deliveryInput && window.google && google.maps.places) new google.maps.places.Autocomplete(deliveryInput, options);
+
+  // Car makes (short list, можно расширить)
+  const makes = [
+    'Acura','Alfa Romeo','Audi','BMW','Buick','Cadillac','Chevrolet','Chrysler','Dodge','Fiat','Ford','Genesis','GMC','Honda','Hyundai','Infiniti','Jaguar','Jeep','Kia','Land Rover','Lexus','Lincoln','Mazda','Mercedes-Benz','Mini','Mitsubishi','Nissan','Porsche','Ram','Subaru','Tesla','Toyota','Volkswagen','Volvo'
+  ];
+  const makeSelect = document.getElementById('car-make');
+  if (makeSelect) {
+    makes.forEach(make => {
+      const opt = document.createElement('option');
+      opt.value = make;
+      opt.textContent = make;
+      makeSelect.appendChild(opt);
+    });
+  }
+
+  // Operated/Inoperated switch label
+  const operatedSwitch = document.getElementById('operated-switch');
+  if (operatedSwitch) {
+    operatedSwitch.addEventListener('change', function() {
+      const label = document.querySelector('label[for="operated-switch"]');
+      if (label) label.textContent = this.checked ? 'Operated' : 'Inoperated';
+    });
+  }
+  // --- Map ---
+  if (typeof initSKFMap === 'function') {
+    initSKFMap();
+  }
+}
 // Section animation on scroll
 AOS.init({
   duration: 900,
