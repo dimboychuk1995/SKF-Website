@@ -21,19 +21,24 @@
 </head>
 <body>
     <header data-aos="fade-down">
-        <div class="container">
+        <div class="container-fluid px-4">
             <nav class="navbar navbar-expand-lg py-3">
                 <a class="logo" href="#">SKF Trucking</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                    <ul class="nav">
+                    <ul class="nav align-items-center">
                         <li class="nav-item"><a class="nav-link" href="#quote">Get a Quote</a></li>
                         <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
                         <li class="nav-item"><a class="nav-link" href="#veterans">Veterans</a></li>
                         <li class="nav-item"><a class="nav-link" href="#reviews">Reviews</a></li>
                         <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                        <li class="nav-item ms-3">
+                            <a class="btn btn-call" href="tel:+19991234567">
+                                <i class="bi bi-telephone-fill me-2"></i>Call Us
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </nav>
@@ -41,47 +46,85 @@
     </header>
 
     <!-- 1. Hero with Quote Form -->
-    <section class="hero" data-aos="fade-up" id="quote">
-        <div class="container">
-            <h1 class="display-4 fw-bold mb-3">Reliable Nationwide<br>Car Shipping</h1>
-            <p class="lead mb-4">Fast, safe, and affordable auto transport across the USA.<br>Trusted by thousands of customers.</p>
-            <form class="quote-form mx-auto" style="max-width: 480px;">
-                <div class="row g-2">
-                    <div class="col-12">
-                        <input id="pickup-location" type="text" class="form-control" placeholder="📍 Pick Up Location (City or ZIP)" autocomplete="off" required>
-                    </div>
-                    <div class="col-12">
-                        <input id="delivery-location" type="text" class="form-control" placeholder="📍 Delivery Location (City or ZIP)" autocomplete="off" required>
-                    </div>
-                    <div class="col-md-6">
-                        <select id="car-make" class="form-select" required>
-                            <option value="">Select Make</option>
-                        </select>
-                    </div>
-                    <div class="col-md-6">
-                        <input id="car-model" type="text" class="form-control" placeholder="Model" required>
-                    </div>
-                    <div class="col-md-6">
-                        <input id="car-year" type="number" class="form-control" placeholder="Year" min="1950" max="2026" required>
-                    </div>
-                    <div class="col-md-6">
-                        <input id="ship-date" type="date" class="form-control" required>
-                    </div>
-                    <div class="col-12">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="operated-switch" checked>
-                            <label class="form-check-label" for="operated-switch">Vehicle is Operable</label>
-                        </div>
-                    </div>
-                    <div class="col-12 mt-3">
-                        <button type="submit" class="btn w-100">
-                            <i class="bi bi-calculator me-2"></i>Get Free Quote
-                        </button>
+    <section class="hero" id="quote">
+        <div class="hero-bg"></div>
+        <div class="container-fluid px-4 position-relative">
+            <div class="row align-items-start pt-4">
+                <!-- Left side - Text -->
+                <div class="col-lg-6 hero-text" data-aos="fade-right">
+                    <p class="hero-subtitle">TRUSTED AUTO TRANSPORT COMPANY</p>
+                    <h1 class="hero-title">YOUR AUTO<br>TRANSPORT EXPERTS</h1>
+                    <p class="hero-desc">Ship your vehicle fast, safe, and secure with SKF Trucking. Get instant quote on your delivery with our shipping calculator.</p>
+                    <div class="hero-badges mt-4">
+                        <span class="badge-item"><i class="bi bi-shield-check"></i> Fully Insured</span>
+                        <span class="badge-item"><i class="bi bi-star-fill"></i> Top Rated</span>
+                        <span class="badge-item"><i class="bi bi-truck"></i> Nationwide</span>
                     </div>
                 </div>
-            </form>
+                <!-- Right side - Quote Form -->
+                <div class="col-lg-5 offset-lg-1" data-aos="fade-left">
+                    <div class="quote-card">
+                        <div class="quote-card-header">
+                            <div class="price-match">
+                                <span>WE PRICE MATCH OUR</span>
+                                <span>TOP COMPETITORS!</span>
+                            </div>
+                            <div class="guarantee-badge">
+                                <span class="percent">100%</span>
+                                <span class="text">Best Price<br>Guaranteed</span>
+                            </div>
+                        </div>
+                        <div class="quote-card-body">
+                            <h2 class="quote-title"><span class="instant-badge">INSTANT</span>Get My Quote</h2>
+                            <p class="quote-subtitle">Reserve Your Spot On Our Trucks Today!</p>
+                            <form class="quote-form" id="quote-form">
+                                <div class="row">
+                                    <div class="col-6 mb-3">
+                                        <label class="form-label">Pickup City:</label>
+                                        <input id="pickup-location" name="pickup_city" type="text" class="form-control" placeholder="Zip or City" autocomplete="off" required>
+                                    </div>
+                                    <div class="col-6 mb-3">
+                                        <label class="form-label">Delivery City:</label>
+                                        <input id="delivery-location" name="delivery_city" type="text" class="form-control" placeholder="Zip or City" autocomplete="off" required>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6 mb-3">
+                                        <label class="form-label">Vehicle Make:</label>
+                                        <select id="car-make" name="vehicle_make" class="form-select" required>
+                                            <option value="">Select Make</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-6 mb-3">
+                                        <label class="form-label">Vehicle Model:</label>
+                                        <input id="car-model" name="vehicle_model" type="text" class="form-control" placeholder="Model" required>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6 mb-3">
+                                        <label class="form-label">Condition:</label>
+                                        <select id="vehicle-condition" name="vehicle_condition" class="form-select" required>
+                                            <option value="operable">Operable</option>
+                                            <option value="inoperable">Inoperable</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-6 mb-3">
+                                        <label class="form-label">Trailer Type:</label>
+                                        <select id="trailer-type" name="trailer_type" class="form-select" required>
+                                            <option value="open">Open Carrier</option>
+                                            <option value="enclosed">Enclosed Carrier</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-quote w-100 mt-2">
+                                    GET MY QUOTE <i class="bi bi-arrow-right ms-2"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="hero-overlay position-absolute top-0 start-0 w-100 h-100"></div>
     </section>
 
     <!-- Stats Section -->
@@ -96,7 +139,7 @@
                 </div>
                 <div class="col-6 col-md-3">
                     <div class="stat-card">
-                        <div class="stat-number" data-count="5000">0</div>
+                        <div class="stat-number" data-count="125000+">0</div>
                         <div class="stat-label">Cars Shipped</div>
                     </div>
                 </div>
@@ -155,10 +198,19 @@
     <!-- Where We Work -->
     <section class="services" style="background: var(--white) !important;" data-aos="fade-up" id="service-area">
         <div class="container">
-            <h2 class="text-center mb-4">Where We Work</h2>
-            <p class="lead text-center mb-4 mx-auto" style="max-width:700px;">SKF Trucking operates nationwide, providing reliable car shipping services to all 48 continental states. See our main service points on the map below.</p>
+            <h2 class="text-center mb-3">Our Routes from Detroit</h2>
+            <p class="lead text-center mb-2 mx-auto" style="max-width:700px;">
+                <strong>Based in Detroit, Michigan</strong> — we operate direct shipping routes to major Midwest cities.
+            </p>
+            <p class="text-center mb-2 mx-auto text-muted" style="max-width:600px;">
+                <i class="bi bi-geo-alt-fill text-danger"></i> Detroit HQ → 
+                <span class="text-warning">●</span> Chicago, Milwaukee, Indianapolis, Cleveland & more
+            </p>
+            <p class="text-center mb-4 mx-auto" style="max-width:600px;">
+                <i class="bi bi-globe-americas text-primary"></i> <strong>We also ship nationwide to all 48 continental states!</strong>
+            </p>
             <div class="d-flex justify-content-center align-items-center" style="min-height:520px;">
-                <div id="skf-map" style="width:100%;max-width:900px;height:520px;min-width:320px;"></div>
+                <div id="skf-map" style="width:100%;max-width:900px;height:520px;min-width:320px;border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,0.15);"></div>
             </div>
         </div>
     </section>
@@ -283,18 +335,18 @@
             <h2>Get In Touch</h2>
             <div class="row justify-content-center">
                 <div class="col-lg-6">
-                    <form class="contact-form">
+                    <form class="contact-form" id="contact-form">
                         <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="Your Name" required>
+                            <input type="text" name="name" class="form-control" placeholder="Your Name" required>
                         </div>
                         <div class="mb-3">
-                            <input type="email" class="form-control" placeholder="Your Email" required>
+                            <input type="email" name="email" class="form-control" placeholder="Your Email" required>
                         </div>
                         <div class="mb-3">
-                            <input type="tel" class="form-control" placeholder="Your Phone">
+                            <input type="tel" name="phone" class="form-control" placeholder="Your Phone">
                         </div>
                         <div class="mb-3">
-                            <textarea class="form-control" rows="4" placeholder="Your Message" required></textarea>
+                            <textarea class="form-control" name="message" rows="4" placeholder="Your Message" required></textarea>
                         </div>
                         <button type="submit" class="btn w-100">
                             <i class="bi bi-send me-2"></i>Send Message
@@ -356,6 +408,40 @@
     <button class="scroll-top" aria-label="Scroll to top">
         <i class="bi bi-chevron-up"></i>
     </button>
+
+    <!-- Quote Modal -->
+    <div class="modal fade" id="quoteModal" tabindex="-1" aria-labelledby="quoteModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="quoteModalLabel">
+                        <i class="bi bi-person-lines-fill me-2"></i>Almost There!
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <p class="text-muted mb-4">Please provide your contact information to receive your free quote.</p>
+                    <form id="contact-info-form">
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Your Name <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="quote-name" name="name" placeholder="John Doe" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Your Email <span class="text-danger">*</span></label>
+                            <input type="email" class="form-control" id="quote-email" name="email" placeholder="john@example.com" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label fw-semibold">Your Phone <span class="text-danger">*</span></label>
+                            <input type="tel" class="form-control" id="quote-phone" name="phone" placeholder="(555) 123-4567" required>
+                        </div>
+                        <button type="submit" class="btn btn-quote w-100">
+                            <i class="bi bi-send me-2"></i>SUBMIT REQUEST
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
     <!-- Main Script (must load before Google Maps callback) -->
     <script src="script.js"></script>
@@ -367,31 +453,88 @@
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script>
     function initSKFMap() {
-        const cities = [
-            { name: 'Detroit, MI', pos: { lat: 42.331427, lng: -83.0457538 } },
+        const detroit = { name: 'Detroit, MI (HQ)', pos: { lat: 42.331427, lng: -83.0457538 } };
+        const destinations = [
             { name: 'Chicago, IL', pos: { lat: 41.8781136, lng: -87.6297982 } },
             { name: 'Milwaukee, WI', pos: { lat: 43.0389025, lng: -87.9064736 } },
             { name: 'Addison, IL', pos: { lat: 41.931696, lng: -88.0017283 } },
             { name: 'Indianapolis, IN', pos: { lat: 39.768403, lng: -86.158068 } },
             { name: 'Cleveland, OH', pos: { lat: 41.49932, lng: -81.6943605 } }
         ];
+        
         const map = new google.maps.Map(document.getElementById('skf-map'), {
             zoom: 6,
-            center: { lat: 41.8, lng: -85.5 },
+            center: { lat: 41.5, lng: -85.5 },
             mapTypeId: 'roadmap',
             styles: [
                 { elementType: 'geometry', stylers: [{ color: '#f5f5f5' }] },
                 { elementType: 'labels.text.stroke', stylers: [{ color: '#ffffff' }] },
                 { elementType: 'labels.text.fill', stylers: [{ color: '#222' }] },
-                { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#e1eaff' }] },
-                { featureType: 'road', elementType: 'geometry', stylers: [{ color: '#fffbe6' }] },
+                { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#c8d7e8' }] },
+                { featureType: 'road', elementType: 'geometry', stylers: [{ color: '#ffffff' }] },
+                { featureType: 'road.highway', elementType: 'geometry', stylers: [{ color: '#ffe8a8' }] },
             ]
         });
-        cities.forEach(city => {
+        
+        // Detroit marker (HQ) - larger and different color
+        new google.maps.Marker({
+            position: detroit.pos,
+            map,
+            title: detroit.name,
+            icon: {
+                path: google.maps.SymbolPath.CIRCLE,
+                scale: 14,
+                fillColor: '#e74c3c',
+                fillOpacity: 1,
+                strokeColor: '#fff',
+                strokeWeight: 4
+            },
+            zIndex: 100
+        });
+        
+        // Add label for Detroit
+        new google.maps.Marker({
+            position: { lat: detroit.pos.lat + 0.4, lng: detroit.pos.lng },
+            map,
+            icon: {
+                path: 'M 0 0',
+                scale: 0
+            },
+            label: {
+                text: '🏠 DETROIT HQ',
+                color: '#003366',
+                fontSize: '12px',
+                fontWeight: 'bold'
+            }
+        });
+        
+        // Draw lines from Detroit to each destination
+        destinations.forEach(dest => {
+            // Route line
+            new google.maps.Polyline({
+                path: [detroit.pos, dest.pos],
+                geodesic: true,
+                strokeColor: '#003366',
+                strokeOpacity: 0.8,
+                strokeWeight: 3,
+                map: map,
+                icons: [{
+                    icon: {
+                        path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+                        scale: 3,
+                        strokeColor: '#003366',
+                        fillColor: '#FFD600',
+                        fillOpacity: 1
+                    },
+                    offset: '100%'
+                }]
+            });
+            
+            // Destination marker
             new google.maps.Marker({
-                position: city.pos,
+                position: dest.pos,
                 map,
-                title: city.name,
+                title: dest.name,
                 icon: {
                     path: google.maps.SymbolPath.CIRCLE,
                     scale: 10,

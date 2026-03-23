@@ -154,7 +154,8 @@ function initSKFMapAndAutocomplete() {
         'Chevrolet','Chrysler','Dodge','Ferrari','Fiat','Ford','Genesis','GMC','Honda',
         'Hyundai','Infiniti','Jaguar','Jeep','Kia','Lamborghini','Land Rover','Lexus',
         'Lincoln','Maserati','Mazda','Mercedes-Benz','Mini','Mitsubishi','Nissan',
-        'Porsche','Ram','Rolls-Royce','Subaru','Tesla','Toyota','Volkswagen','Volvo'
+        'Porsche','Ram','Rolls-Royce','Subaru','Tesla','Toyota','Volkswagen','Volvo',
+        'Other'
     ];
     const makeSelect = document.getElementById('car-make');
     if (makeSelect) {
@@ -208,40 +209,126 @@ function initSKFMapAndAutocomplete() {
     }
 }
 
-// Form submission handling
+// Formspree endpoint
+const FORMSPREE_URL = 'https://formspree.io/f/xdawqayo';
+
+// Store quote form data
+let quoteFormData = {};
+
+// Form submission handling - Open modal instead of submitting
 document.querySelector('.quote-form')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Store quote form data
+    quoteFormData = {
+        pickup_city: document.getElementById('pickup-location')?.value || '',
+        delivery_city: document.getElementById('delivery-location')?.value || '',
+        vehicle_make: document.getElementById('car-make')?.value || '',
+        vehicle_model: document.getElementById('car-model')?.value || '',
+        vehicle_condition: document.getElementById('vehicle-condition')?.value || '',
+        trailer_type: document.getElementById('trailer-type')?.value || ''
+    };
+    
+    // Open the modal
+    const quoteModal = new bootstrap.Modal(document.getElementById('quoteModal'));
+    quoteModal.show();
+});
+
+// Contact info form in modal - sends combined data
+document.getElementById('contact-info-form')?.addEventListener('submit', async function(e) {
     e.preventDefault();
     const btn = this.querySelector('button[type="submit"]');
     const originalText = btn.innerHTML;
-    btn.innerHTML = '<i class="bi bi-hourglass-split me-2"></i>Processing...';
+    btn.innerHTML = '<i class="bi bi-hourglass-split me-2"></i>Submitting...';
     btn.disabled = true;
     
-    setTimeout(() => {
-        btn.innerHTML = '<i class="bi bi-check-circle me-2"></i>Quote Requested!';
-        btn.style.background = 'linear-gradient(135deg, #28a745 0%, #218838 100%)';
+    // Combine quote data with contact info
+    const formData = {
+        _subject: 'New Quote Request - SKF Trucking',
+        name: document.getElementById('quote-name')?.value || '',
+        email: document.getElementById('quote-email')?.value || '',
+        phone: document.getElementById('quote-phone')?.value || '',
+        ...quoteFormData
+    };
+    
+    try {
+        const response = await fetch(FORMSPREE_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        });
+        
+        if (response.ok) {
+            btn.innerHTML = '<i class="bi bi-check-circle me-2"></i>Quote Requested!';
+            btn.style.background = 'linear-gradient(135deg, #28a745 0%, #218838 100%)';
+            
+            setTimeout(() => {
+                bootstrap.Modal.getInstance(document.getElementById('quoteModal')).hide();
+                btn.innerHTML = originalText;
+                btn.style.background = '';
+                btn.disabled = false;
+                this.reset();
+                document.querySelector('.quote-form')?.reset();
+                quoteFormData = {};
+            }, 1500);
+        } else {
+            throw new Error('Form submission failed');
+        }
+    } catch (error) {
+        btn.innerHTML = '<i class="bi bi-x-circle me-2"></i>Error! Try again';
+        btn.style.background = '#dc3545';
         setTimeout(() => {
             btn.innerHTML = originalText;
             btn.style.background = '';
             btn.disabled = false;
-            this.reset();
-            document.getElementById('operated-switch').checked = true;
         }, 2000);
-    }, 1500);
+    }
 });
 
-document.querySelector('.contact-form')?.addEventListener('submit', function(e) {
+// Contact form submission
+document.getElementById('contact-form')?.addEventListener('submit', async function(e) {
     e.preventDefault();
     const btn = this.querySelector('button[type="submit"]');
     const originalText = btn.innerHTML;
     btn.innerHTML = '<i class="bi bi-hourglass-split me-2"></i>Sending...';
     btn.disabled = true;
     
-    setTimeout(() => {
-        btn.innerHTML = '<i class="bi bi-check-circle me-2"></i>Message Sent!';
+    const formData = new FormData(this);
+    formData.append('_subject', 'New Contact Message - SKF Trucking');
+    
+    try {
+        const response = await fetch(FORMSPREE_URL, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+        
+        if (response.ok) {
+            btn.innerHTML = '<i class="bi bi-check-circle me-2"></i>Message Sent!';
+            btn.style.background = 'linear-gradient(135deg, #28a745 0%, #218838 100%)';
+            btn.style.color = 'white';
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.style.background = '';
+                btn.style.color = '';
+                btn.disabled = false;
+                this.reset();
+            }, 2000);
+        } else {
+            throw new Error('Form submission failed');
+        }
+    } catch (error) {
+        btn.innerHTML = '<i class="bi bi-x-circle me-2"></i>Error!';
+        btn.style.background = '#dc3545';
         setTimeout(() => {
             btn.innerHTML = originalText;
+            btn.style.background = '';
             btn.disabled = false;
-            this.reset();
         }, 2000);
-    }, 1500);
+    }
 });
