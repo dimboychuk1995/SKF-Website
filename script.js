@@ -30,6 +30,38 @@ function initSKFMapAndAutocomplete() {
       if (label) label.textContent = this.checked ? 'Operated' : 'Inoperated';
     });
   }
+  // --- Autocomplete ZIP <-> City ---
+  function fetchCityByZip(zip, cb) {
+    fetch(`https://api.zippopotam.us/us/${zip}`)
+      .then(r => r.ok ? r.json() : null)
+      .then(data => {
+        if (data && data.places && data.places.length > 0) {
+          const place = data.places[0];
+          cb(`${place["place name"]}, ${place["state abbreviation"]}`);
+        } else {
+          cb(null);
+        }
+      })
+      .catch(() => cb(null));
+  }
+
+  function handleLocationInput(e) {
+    const val = e.target.value.trim();
+    // ZIP: 5 digits
+    if (/^\d{5}$/.test(val)) {
+      fetchCityByZip(val, city => {
+        if (city) e.target.value = city;
+      });
+    }
+    // City, ST: do nothing (Google Autocomplete handles)
+  }
+
+  if (pickupInput) {
+    pickupInput.addEventListener('blur', handleLocationInput);
+  }
+  if (deliveryInput) {
+    deliveryInput.addEventListener('blur', handleLocationInput);
+  }
   // --- Map ---
   if (typeof initSKFMap === 'function') {
     initSKFMap();
@@ -94,9 +126,6 @@ fetch('reviews.json')
       `;
       reviewsBlock.appendChild(item);
     });
-    // Add Google logo
-    const logo = document.createElement('div');
-    logo.className = 'text-center w-100';
-    logo.innerHTML = '<img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google" style="height:28px; margin-top:10px;">';
-    reviewsBlock.appendChild(logo);
   });
+
+

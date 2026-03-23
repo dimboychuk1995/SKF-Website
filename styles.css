@@ -1,18 +1,23 @@
-body {
+/* Галерея: фото на весь блок */
+#carhauler-gallery .container {
+    max-width: 100% !important;
+    padding: 0;
+/* Убрать полоски и отступы между блоками */
+.services {
+    background: #f8f9fa !important;
+    padding: 60px 0;
+    border-radius: 0;
     margin: 0;
-    font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
-    background: linear-gradient(135deg, #e6f0fa 0%, #f8f9fa 100%);
-    color: #222;
-    min-height: 100vh;
-    transition: background 0.6s;
+    box-shadow: none !important;
+    border: none !important;
+    border-top: none !important;
+    border-bottom: none !important;
+    transition: none;
 }
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
+
 .wide-container {
     max-width: 1600px !important;
+}
 }
 header {
     background: linear-gradient(90deg, #003366 60%, #00509e 100%);
@@ -23,15 +28,60 @@ header {
     padding: 0;
     transition: background 0.5s;
 }
-.logo {
-    font-size: 2.2rem;
-    font-weight: 700;
-    letter-spacing: 2.5px;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    color: #ffcc00;
-    transition: color 0.3s;
+/* Зебра для секций */
+.hero {
+    background: #fff !important;
+    color: #003366;
+    padding: 100px 0 80px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    min-height: 420px;
+    box-shadow: none;
 }
-nav ul {
+.services {
+    background: #f8f9fa !important;
+    padding: 60px 0;
+    border-radius: 0;
+    margin: 0;
+    box-shadow: none !important;
+    border: none !important;
+    border-top: none !important;
+    border-bottom: none !important;
+    transition: none;
+}
+.advantages {
+    background: #fff !important;
+    padding: 60px 0;
+    border-radius: 0;
+    margin: 0;
+    box-shadow: none !important;
+    border: none !important;
+    border-top: none !important;
+    border-bottom: none !important;
+    transition: none;
+}
+.reviews {
+    background: #f8f9fa !important;
+    padding: 60px 0;
+    border-radius: 0;
+    margin: 0;
+    box-shadow: none !important;
+    border: none !important;
+    border-top: none !important;
+    border-bottom: none !important;
+    transition: none;
+}
+.contact {
+    background: #fff !important;
+    padding: 60px 0;
+    border-radius: 0;
+    margin: 0;
+    box-shadow: none !important;
+    border: none !important;
+    border-top: none !important;
+    border-bottom: none !important;
+    transition: none;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -153,12 +203,15 @@ nav ul {
     transform: translateY(-6px) scale(1.03);
 }
 .advantages {
-    background: linear-gradient(120deg, #e6f0fa 80%, #f8f9fa 100%);
+    background: #fff !important;
     padding: 60px 0;
-    border-radius: 32px;
-    margin-bottom: 40px;
-    box-shadow: 0 4px 32px rgba(0,51,102,0.04);
-    transition: box-shadow 0.3s;
+    border-radius: 0;
+    margin: 0;
+    box-shadow: none !important;
+    border: none !important;
+    border-top: none !important;
+    border-bottom: none !important;
+    transition: none;
 }
 .advantage-item {
     transition: box-shadow 0.3s, transform 0.3s;
@@ -187,12 +240,15 @@ nav ul {
     box-shadow: 0 2px 8px rgba(0,0,0,0.03);
 }
 .reviews {
-    background: #fff;
+    background: #f8f9fa !important;
     padding: 60px 0;
-    border-radius: 32px;
-    margin-bottom: 40px;
-    box-shadow: 0 4px 32px rgba(0,51,102,0.04);
-    transition: box-shadow 0.3s;
+    border-radius: 0;
+    margin: 0;
+    box-shadow: none !important;
+    border: none !important;
+    border-top: none !important;
+    border-bottom: none !important;
+    transition: none;
 }
 .reviews h2 {
     text-align: center;
@@ -225,12 +281,15 @@ nav ul {
     color: #003366;
 }
 .contact {
-    background: linear-gradient(120deg, #f1f5fb 80%, #e6f0fa 100%);
+    background: #fff !important;
     padding: 60px 0;
-    border-radius: 32px;
-    margin-bottom: 40px;
-    box-shadow: 0 4px 32px rgba(0,51,102,0.04);
-    transition: box-shadow 0.3s;
+    border-radius: 0;
+    margin: 0;
+    box-shadow: none !important;
+    border: none !important;
+    border-top: none !important;
+    border-bottom: none !important;
+    transition: none;
 }
 .contact h2 {
     text-align: center;
