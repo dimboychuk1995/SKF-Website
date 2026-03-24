@@ -64,9 +64,9 @@ body {
 
 /* ===== Header ===== */
 header {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    background: #111;
     color: var(--white);
-    padding: 0;
+    padding: 0 0 0 0 !important;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -74,10 +74,19 @@ header {
     box-shadow: var(--shadow-md);
 }
 
+.navbar {
+    min-height: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
 header.scrolled {
-    padding: 5px 0;
-    background: rgba(0, 51, 102, 0.95);
-    backdrop-filter: blur(10px);
+    padding: 0.05rem 0 !important;
+    background: #111 !important;
+    backdrop-filter: none;
+/* Уменьшить вертикальные отступы в хедере */
+    padding-top: 0.3rem !important;
+    padding-bottom: 0.3rem !important;
 }
 
 .logo {
@@ -91,10 +100,6 @@ header.scrolled {
     gap: 10px;
 }
 
-.logo::before {
-    content: '🚚';
-    font-size: 1.5rem;
-}
 
 .nav {
     list-style: none;
@@ -983,7 +988,7 @@ header.scrolled {
 
 /* ===== Footer ===== */
 footer {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    background: #111;
     color: var(--white);
     padding: 40px 0 20px;
     margin-top: 0;
