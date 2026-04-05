@@ -1,4 +1,62 @@
-const FORMSPREE_URL = 'https://formspree.io/f/xdawqayo';
+const FORMSPREE_URL = 'https://formspree.io/f/xzdkyzqr';
+const PHOTO_FILES = [
+    'photo_1_2026-04-05_16-37-18.jpg',
+    'photo_1_2026-04-05_16-37-29.jpg',
+    'photo_1_2026-04-05_16-37-32.jpg',
+    'photo_1_2026-04-05_16-37-35.jpg',
+    'photo_1_2026-04-05_16-37-40.jpg',
+    'photo_10_2026-04-05_16-37-18.jpg',
+    'photo_10_2026-04-05_16-37-29.jpg',
+    'photo_10_2026-04-05_16-37-40.jpg',
+    'photo_11_2026-04-05_16-37-40.jpg',
+    'photo_12_2026-04-05_16-37-40.jpg',
+    'photo_13_2026-04-05_16-37-40.jpg',
+    'photo_14_2026-04-05_16-37-40.jpg',
+    'photo_15_2026-04-05_16-37-40.jpg',
+    'photo_16_2026-04-05_16-37-40.jpg',
+    'photo_17_2026-04-05_16-37-40.jpg',
+    'photo_18_2026-04-05_16-37-40.jpg',
+    'photo_19_2026-04-05_16-37-40.jpg',
+    'photo_2_2026-04-05_16-37-18.jpg',
+    'photo_2_2026-04-05_16-37-29.jpg',
+    'photo_2_2026-04-05_16-37-35.jpg',
+    'photo_2_2026-04-05_16-37-40.jpg',
+    'photo_20_2026-04-05_16-37-40.jpg',
+    'photo_21_2026-04-05_16-37-40.jpg',
+    'photo_22_2026-04-05_16-37-40.jpg',
+    'photo_23_2026-04-05_16-37-40.jpg',
+    'photo_24_2026-04-05_16-37-40.jpg',
+    'photo_25_2026-04-05_16-37-40.jpg',
+    'photo_26_2026-04-05_16-37-40.jpg',
+    'photo_27_2026-04-05_16-37-40.jpg',
+    'photo_28_2026-04-05_16-37-40.jpg',
+    'photo_29_2026-04-05_16-37-40.jpg',
+    'photo_3_2026-04-05_16-37-18.jpg',
+    'photo_3_2026-04-05_16-37-29.jpg',
+    'photo_3_2026-04-05_16-37-35.jpg',
+    'photo_3_2026-04-05_16-37-40.jpg',
+    'photo_30_2026-04-05_16-37-40.jpg',
+    'photo_31_2026-04-05_16-37-40.jpg',
+    'photo_32_2026-04-05_16-37-40.jpg',
+    'photo_4_2026-04-05_16-37-18.jpg',
+    'photo_4_2026-04-05_16-37-29.jpg',
+    'photo_4_2026-04-05_16-37-40.jpg',
+    'photo_5_2026-04-05_16-37-18.jpg',
+    'photo_5_2026-04-05_16-37-29.jpg',
+    'photo_5_2026-04-05_16-37-40.jpg',
+    'photo_6_2026-04-05_16-37-18.jpg',
+    'photo_6_2026-04-05_16-37-29.jpg',
+    'photo_6_2026-04-05_16-37-40.jpg',
+    'photo_7_2026-04-05_16-37-18.jpg',
+    'photo_7_2026-04-05_16-37-29.jpg',
+    'photo_7_2026-04-05_16-37-40.jpg',
+    'photo_8_2026-04-05_16-37-18.jpg',
+    'photo_8_2026-04-05_16-37-29.jpg',
+    'photo_8_2026-04-05_16-37-40.jpg',
+    'photo_9_2026-04-05_16-37-18.jpg',
+    'photo_9_2026-04-05_16-37-29.jpg',
+    'photo_9_2026-04-05_16-37-40.jpg'
+];
 
 let quoteFormData = {};
 let testimonialsState = {
@@ -6,15 +64,19 @@ let testimonialsState = {
     total: 0,
     intervalId: null
 };
+let galleryState = {
+    visibleCount: 3,
+    step: 3
+};
 
 document.addEventListener('DOMContentLoaded', () => {
     initPreloader();
     initHeader();
     initMobileNavigation();
     initSmoothScroll();
+    initPhotosGallery();
     initReveal();
     initCounters();
-    initPhotosLoadMore();
     initFAQ();
     initBackToTop();
     initTransitBars();
@@ -163,21 +225,42 @@ function initCounters() {
     counters.forEach((counter) => observer.observe(counter));
 }
 
-function initPhotosLoadMore() {
-    const button = document.getElementById('loadMorePhotos');
+function initPhotosGallery() {
     const grid = document.getElementById('photosGrid');
+    const button = document.getElementById('loadMorePhotos');
+    if (!grid) return;
 
-    if (!button || !grid) return;
+    const renderGallery = () => {
+        grid.innerHTML = PHOTO_FILES.slice(0, galleryState.visibleCount).map((fileName, index) => {
+            const photoNumber = String(index + 1).padStart(2, '0');
+
+            return `
+                <article class="gallery-item reveal visible">
+                    <img src="images/${fileName}" alt="SKF transport photo ${index + 1}" loading="lazy">
+                    <div class="gallery-caption"><span>Recent Transport ${photoNumber}</span></div>
+                </article>
+            `;
+        }).join('');
+
+        if (!button) return;
+
+        const hasMorePhotos = galleryState.visibleCount < PHOTO_FILES.length;
+        button.hidden = !hasMorePhotos;
+
+        if (hasMorePhotos) {
+            const remaining = PHOTO_FILES.length - galleryState.visibleCount;
+            const nextBatchSize = Math.min(galleryState.step, remaining);
+            button.innerHTML = `<i class="bi bi-images"></i> Show ${nextBatchSize} More Photos`;
+        }
+    };
+
+    renderGallery();
+
+    if (!button) return;
 
     button.addEventListener('click', () => {
-        const expanded = grid.classList.toggle('expanded');
-        button.innerHTML = expanded
-            ? '<i class="bi bi-chevron-up"></i> Show Less'
-            : '<i class="bi bi-images"></i> Show More Photos';
-
-        if (!expanded) {
-            grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+        galleryState.visibleCount = Math.min(galleryState.visibleCount + galleryState.step, PHOTO_FILES.length);
+        renderGallery();
     });
 }
 

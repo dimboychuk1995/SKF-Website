@@ -722,6 +722,10 @@ ul {
     text-align: center;
 }
 
+.photos-load-more [hidden] {
+    display: none !important;
+}
+
 .about-grid {
     grid-template-columns: 1.1fr 0.9fr;
     align-items: center;
@@ -827,14 +831,6 @@ ul {
     gap: 18px;
 }
 
-.gallery-expandable .gallery-item:nth-child(n + 4) {
-    display: none;
-}
-
-.gallery-expandable.expanded .gallery-item:nth-child(n + 4) {
-    display: block;
-}
-
 .gallery-caption {
     position: absolute;
     left: 18px;
@@ -933,8 +929,17 @@ ul {
 
 .section-veterans {
     position: relative;
-    background: url("images/8a5e5143a_buckeyetrailers-3-chevy-trucks-sunset.jpg") center center / cover no-repeat;
+    background: #0a1b2d;
     overflow: hidden;
+}
+
+.section-veterans::before {
+    content: "";
+    position: absolute;
+    inset: -24px;
+    background: url("images/photo_10_2026-04-05_16-37-18.jpg") center center / cover no-repeat;
+    filter: blur(10px);
+    transform: scale(1.08);
 }
 
 .veterans-overlay {
