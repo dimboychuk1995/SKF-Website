@@ -1,395 +1,646 @@
-// --- SKF Trucking Main Script ---
+const FORMSPREE_URL = 'https://formspree.io/f/xdawqayo';
 
-// Initialize when DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize AOS animations
-    AOS.init({
-        duration: 800,
-        once: true,
-        offset: 100
+let quoteFormData = {};
+let testimonialsState = {
+    current: 0,
+    total: 0,
+    intervalId: null
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    initPreloader();
+    initHeader();
+    initMobileNavigation();
+    initSmoothScroll();
+    initReveal();
+    initCounters();
+    initPhotosLoadMore();
+    initFAQ();
+    initBackToTop();
+    initTransitBars();
+    initQuoteFormFlow();
+    initContactForm();
+    initTestimonials();
+    populateCarMakes();
+});
+
+function initPreloader() {
+    const preloader = document.getElementById('preloader');
+    if (!preloader) return;
+
+    const hidePreloader = () => preloader.classList.add('hidden');
+
+    window.addEventListener('load', () => {
+        setTimeout(hidePreloader, 500);
     });
 
-    // Sticky header on scroll
-    const header = document.querySelector('header');
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
+    setTimeout(hidePreloader, 2500);
+}
+
+function initHeader() {
+    const header = document.getElementById('header');
+    const navLinks = document.querySelectorAll('#navLinks a');
+    const sections = document.querySelectorAll('section[id]');
+
+    if (!header) return;
+
+    const updateHeader = () => {
+        header.classList.toggle('scrolled', window.scrollY > 40);
+    };
+
+    const updateActiveLink = () => {
+        const offset = window.scrollY + 140;
+
+        sections.forEach((section) => {
+            const top = section.offsetTop;
+            const bottom = top + section.offsetHeight;
+            const link = document.querySelector(`#navLinks a[href="#${section.id}"]`);
+
+            if (!link) return;
+
+            if (offset >= top && offset < bottom) {
+                navLinks.forEach((item) => item.classList.remove('active'));
+                link.classList.add('active');
+            }
+        });
+    };
+
+    window.addEventListener('scroll', updateHeader, { passive: true });
+    window.addEventListener('scroll', updateActiveLink, { passive: true });
+
+    updateHeader();
+    updateActiveLink();
+}
+
+function initMobileNavigation() {
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+
+    if (!hamburger || !navLinks) return;
+
+    hamburger.addEventListener('click', () => {
+        const isOpen = hamburger.classList.toggle('active');
+        navLinks.classList.toggle('open', isOpen);
+        hamburger.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    navLinks.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+        });
+    });
+}
+
+function initSmoothScroll() {
+    const header = document.getElementById('header');
+
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', (event) => {
+            const targetId = anchor.getAttribute('href');
+            if (!targetId || targetId === '#') return;
+
+            const target = document.querySelector(targetId);
+            if (!target) return;
+
+            event.preventDefault();
+
+            const headerOffset = header ? header.offsetHeight + 12 : 0;
+            const targetPosition = target.getBoundingClientRect().top + window.scrollY - headerOffset;
+
+            window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+        });
+    });
+}
+
+function initReveal() {
+    const revealElements = document.querySelectorAll('.reveal');
+    if (!revealElements.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+
+    revealElements.forEach((element) => observer.observe(element));
+}
+
+function initCounters() {
+    const counters = document.querySelectorAll('.stat-number[data-target]');
+    if (!counters.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+
+            const counter = entry.target;
+            const target = Number(counter.dataset.target || '0');
+            const duration = 1800;
+            const startTime = performance.now();
+
+            const updateCounter = (currentTime) => {
+                const progress = Math.min((currentTime - startTime) / duration, 1);
+                const value = Math.floor(progress * target);
+                counter.textContent = value.toLocaleString('en-US');
+
+                if (progress < 1) {
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    counter.textContent = target.toLocaleString('en-US');
+                }
+            };
+
+            requestAnimationFrame(updateCounter);
+            observer.unobserve(counter);
+        });
+    }, { threshold: 0.5 });
+
+    counters.forEach((counter) => observer.observe(counter));
+}
+
+function initPhotosLoadMore() {
+    const button = document.getElementById('loadMorePhotos');
+    const grid = document.getElementById('photosGrid');
+
+    if (!button || !grid) return;
+
+    button.addEventListener('click', () => {
+        const expanded = grid.classList.toggle('expanded');
+        button.innerHTML = expanded
+            ? '<i class="bi bi-chevron-up"></i> Show Less'
+            : '<i class="bi bi-images"></i> Show More Photos';
+
+        if (!expanded) {
+            grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     });
+}
 
-    // Scroll to top button
-    const scrollTopBtn = document.querySelector('.scroll-top');
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 500) {
-            scrollTopBtn.classList.add('visible');
-        } else {
-            scrollTopBtn.classList.remove('visible');
-        }
+function initFAQ() {
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach((item) => {
+        const question = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+
+        if (!question || !answer) return;
+
+        question.addEventListener('click', () => {
+            const isOpen = item.classList.contains('open');
+
+            faqItems.forEach((faq) => {
+                faq.classList.remove('open');
+                const faqAnswer = faq.querySelector('.faq-answer');
+                if (faqAnswer) {
+                    faqAnswer.style.maxHeight = null;
+                }
+            });
+
+            if (!isOpen) {
+                item.classList.add('open');
+                answer.style.maxHeight = `${answer.scrollHeight}px`;
+            }
+        });
     });
-    scrollTopBtn.addEventListener('click', function() {
+}
+
+function initBackToTop() {
+    const button = document.getElementById('backToTop');
+    if (!button) return;
+
+    const updateButton = () => {
+        button.classList.toggle('visible', window.scrollY > 500);
+    };
+
+    window.addEventListener('scroll', updateButton, { passive: true });
+    button.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // Smooth scroll for nav links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            if (href !== '#') {
-                e.preventDefault();
-                const target = document.querySelector(href);
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    // Close mobile menu if open
-                    const navCollapse = document.querySelector('.navbar-collapse');
-                    if (navCollapse && navCollapse.classList.contains('show')) {
-                        bootstrap.Collapse.getInstance(navCollapse)?.hide();
-                    }
-                }
-            }
-        });
+    updateButton();
+}
+
+function initTransitBars() {
+    const bars = document.querySelectorAll('.transit-bar .bar');
+    const coverageSection = document.getElementById('coverage');
+    if (!bars.length || !coverageSection) return;
+
+    const originalWidths = Array.from(bars, (bar) => bar.style.width);
+    bars.forEach((bar) => {
+        bar.style.width = '0';
     });
 
-    // Counter animation for stats
-    const counters = document.querySelectorAll('.stat-number');
-    const animateCounter = (counter) => {
-        const target = parseInt(counter.dataset.count);
-        const duration = 2000;
-        const step = target / (duration / 16);
-        let current = 0;
-        const timer = setInterval(() => {
-            current += step;
-            if (current >= target) {
-                counter.textContent = target + (counter.dataset.suffix || '');
-                clearInterval(timer);
-            } else {
-                counter.textContent = Math.floor(current);
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+
+            bars.forEach((bar, index) => {
+                setTimeout(() => {
+                    bar.style.width = originalWidths[index];
+                }, index * 120);
+            });
+            observer.disconnect();
+        });
+    }, { threshold: 0.35 });
+
+    observer.observe(coverageSection);
+}
+
+function initQuoteFormFlow() {
+    const quoteForm = document.getElementById('quote-form');
+    const contactInfoForm = document.getElementById('contact-info-form');
+    const modalElement = document.getElementById('quoteModal');
+
+    if (quoteForm && modalElement) {
+        quoteForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            if (!quoteForm.checkValidity()) {
+                quoteForm.reportValidity();
+                return;
             }
-        }, 16);
-    };
 
-    // Intersection Observer for counter animation
-    const observerOptions = { threshold: 0.5 };
-    const counterObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                animateCounter(entry.target);
-                counterObserver.unobserve(entry.target);
+            quoteFormData = {
+                pickup_city: document.getElementById('pickup-location')?.value.trim() || '',
+                delivery_city: document.getElementById('delivery-location')?.value.trim() || '',
+                vehicle_make: document.getElementById('car-make')?.value || '',
+                vehicle_model: document.getElementById('car-model')?.value.trim() || '',
+                vehicle_condition: document.getElementById('vehicle-condition')?.value || '',
+                trailer_type: document.getElementById('trailer-type')?.value || ''
+            };
+
+            const modal = window.bootstrap ? new window.bootstrap.Modal(modalElement) : null;
+            modal?.show();
+        });
+    }
+
+    if (contactInfoForm) {
+        contactInfoForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            if (!contactInfoForm.checkValidity()) {
+                contactInfoForm.reportValidity();
+                return;
+            }
+
+            const button = contactInfoForm.querySelector('button[type="submit"]');
+            if (!button) return;
+
+            const originalText = button.innerHTML;
+            button.innerHTML = '<i class="bi bi-hourglass-split"></i> Sending...';
+            button.disabled = true;
+
+            const payload = {
+                _subject: 'New Quote Request - SKF Trucking',
+                name: document.getElementById('quote-name')?.value.trim() || '',
+                email: document.getElementById('quote-email')?.value.trim() || '',
+                phone: document.getElementById('quote-phone')?.value.trim() || '',
+                ...quoteFormData
+            };
+
+            try {
+                const response = await fetch(FORMSPREE_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error('Quote request failed');
+                }
+
+                button.innerHTML = '<i class="bi bi-check-circle-fill"></i> Request Sent';
+
+                setTimeout(() => {
+                    const modalInstance = window.bootstrap
+                        ? window.bootstrap.Modal.getInstance(modalElement)
+                        : null;
+                    modalInstance?.hide();
+                    contactInfoForm.reset();
+                    quoteForm.reset();
+                    button.innerHTML = originalText;
+                    button.disabled = false;
+                    quoteFormData = {};
+                }, 1200);
+            } catch (error) {
+                button.innerHTML = '<i class="bi bi-x-circle-fill"></i> Try Again';
+
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.disabled = false;
+                }, 1800);
             }
         });
-    }, observerOptions);
-    counters.forEach(counter => counterObserver.observe(counter));
-
-    // Button ripple effect
-    document.querySelectorAll('button, .btn').forEach(btn => {
-        btn.addEventListener('mousemove', function(e) {
-            const rect = btn.getBoundingClientRect();
-            btn.style.setProperty('--x', e.clientX - rect.left + 'px');
-            btn.style.setProperty('--y', e.clientY - rect.top + 'px');
-        });
-    });
-
-    // Load Google Reviews with Carousel
-    fetch('reviews.json')
-        .then(res => res.json())
-        .then(reviews => {
-            const reviewsTrack = document.getElementById('google-reviews');
-            const dotsContainer = document.getElementById('carousel-dots');
-            if (!reviewsTrack) return;
-            
-            const shuffled = reviews.sort(() => 0.5 - Math.random()).slice(0, 20);
-            
-            shuffled.forEach((r) => {
-                const stars = '★'.repeat(r.rating) + '★'.repeat(5 - r.rating).split('').map(() => '<span style="color:#ddd;">★</span>').join('');
-                const date = new Date(r.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
-                const tag = r.tag || 'Great service';
-                
-                const card = document.createElement('div');
-                card.className = 'review-card';
-                card.innerHTML = `
-                    <div class="review-header">
-                        <img src="https://ui-avatars.com/api/?name=${encodeURIComponent(r.author)}&background=e0e0e0&color=333&size=50&bold=true" 
-                             alt="${r.author}" 
-                             class="review-avatar">
-                        <div class="review-info">
-                            <p class="review-author">${r.author} <span class="review-date">- ${date}</span></p>
-                            <div class="review-stars">${'★'.repeat(r.rating)}<span style="color:#ddd;">${'★'.repeat(5 - r.rating)}</span></div>
-                            <div class="review-tag">"${tag}"</div>
-                        </div>
-                    </div>
-                    <p class="review-text">${r.text}</p>
-                `;
-                reviewsTrack.appendChild(card);
-            });
-            
-            // Carousel functionality
-            let currentPage = 0;
-            const getItemsPerPage = () => {
-                if (window.innerWidth <= 576) return 1;
-                if (window.innerWidth <= 768) return 2;
-                if (window.innerWidth <= 992) return 3;
-                if (window.innerWidth <= 1200) return 4;
-                return 5;
-            };
-            
-            const updateCarousel = () => {
-                const itemsPerPage = getItemsPerPage();
-                const totalPages = Math.ceil(shuffled.length / itemsPerPage);
-                const cards = reviewsTrack.querySelectorAll('.review-card');
-                const cardWidth = cards[0]?.offsetWidth || 240;
-                const gap = 20;
-                const offset = currentPage * itemsPerPage * (cardWidth + gap);
-                reviewsTrack.style.transform = `translateX(-${offset}px)`;
-                
-                // Update dots
-                dotsContainer.innerHTML = '';
-                for (let i = 0; i < totalPages; i++) {
-                    const dot = document.createElement('div');
-                    dot.className = 'carousel-dot' + (i === currentPage ? ' active' : '');
-                    dot.addEventListener('click', () => {
-                        currentPage = i;
-                        updateCarousel();
-                    });
-                    dotsContainer.appendChild(dot);
-                }
-            };
-            
-            document.querySelector('.carousel-prev')?.addEventListener('click', () => {
-                const itemsPerPage = getItemsPerPage();
-                const totalPages = Math.ceil(shuffled.length / itemsPerPage);
-                currentPage = (currentPage - 1 + totalPages) % totalPages;
-                updateCarousel();
-            });
-            
-            document.querySelector('.carousel-next')?.addEventListener('click', () => {
-                const itemsPerPage = getItemsPerPage();
-                const totalPages = Math.ceil(shuffled.length / itemsPerPage);
-                currentPage = (currentPage + 1) % totalPages;
-                updateCarousel();
-            });
-            
-            // Auto-play carousel
-            setInterval(() => {
-                const itemsPerPage = getItemsPerPage();
-                const totalPages = Math.ceil(shuffled.length / itemsPerPage);
-                currentPage = (currentPage + 1) % totalPages;
-                updateCarousel();
-            }, 5000);
-            
-            window.addEventListener('resize', () => {
-                currentPage = 0;
-                updateCarousel();
-            });
-            
-            updateCarousel();
-        })
-        .catch(err => console.log('Reviews not loaded:', err));
-
-    // Set minimum date for shipping date input
-    const shipDateInput = document.getElementById('ship-date');
-    if (shipDateInput) {
-        const today = new Date().toISOString().split('T')[0];
-        shipDateInput.setAttribute('min', today);
-        shipDateInput.value = today;
-    }
-});
-
-// Google Maps and Autocomplete initialization
-function initSKFMapAndAutocomplete() {
-    // Google Places Autocomplete
-    const options = { types: ['(cities)'], componentRestrictions: { country: 'us' } };
-    const pickupInput = document.getElementById('pickup-location');
-    const deliveryInput = document.getElementById('delivery-location');
-    
-    if (pickupInput && window.google && google.maps.places) {
-        new google.maps.places.Autocomplete(pickupInput, options);
-    }
-    if (deliveryInput && window.google && google.maps.places) {
-        new google.maps.places.Autocomplete(deliveryInput, options);
-    }
-
-    // Car makes list
-    const makes = [
-        'Acura','Alfa Romeo','Aston Martin','Audi','Bentley','BMW','Buick','Cadillac',
-        'Chevrolet','Chrysler','Dodge','Ferrari','Fiat','Ford','Genesis','GMC','Honda',
-        'Hyundai','Infiniti','Jaguar','Jeep','Kia','Lamborghini','Land Rover','Lexus',
-        'Lincoln','Maserati','Mazda','Mercedes-Benz','Mini','Mitsubishi','Nissan',
-        'Porsche','Ram','Rolls-Royce','Subaru','Tesla','Toyota','Volkswagen','Volvo',
-        'Other'
-    ];
-    const makeSelect = document.getElementById('car-make');
-    if (makeSelect) {
-        makes.forEach(make => {
-            const opt = document.createElement('option');
-            opt.value = make;
-            opt.textContent = make;
-            makeSelect.appendChild(opt);
-        });
-    }
-
-    // Operated/Inoperated switch label
-    const operatedSwitch = document.getElementById('operated-switch');
-    if (operatedSwitch) {
-        operatedSwitch.addEventListener('change', function() {
-            const label = document.querySelector('label[for="operated-switch"]');
-            if (label) label.textContent = this.checked ? 'Vehicle is Operable' : 'Vehicle is Inoperable';
-        });
-    }
-
-    // ZIP code to city conversion
-    function fetchCityByZip(zip, callback) {
-        fetch(`https://api.zippopotam.us/us/${zip}`)
-            .then(r => r.ok ? r.json() : null)
-            .then(data => {
-                if (data && data.places && data.places.length > 0) {
-                    const place = data.places[0];
-                    callback(`${place["place name"]}, ${place["state abbreviation"]}`);
-                } else {
-                    callback(null);
-                }
-            })
-            .catch(() => callback(null));
-    }
-
-    function handleLocationInput(e) {
-        const val = e.target.value.trim();
-        if (/^\d{5}$/.test(val)) {
-            fetchCityByZip(val, city => {
-                if (city) e.target.value = city;
-            });
-        }
-    }
-
-    if (pickupInput) pickupInput.addEventListener('blur', handleLocationInput);
-    if (deliveryInput) deliveryInput.addEventListener('blur', handleLocationInput);
-
-    // Initialize map
-    if (typeof initSKFMap === 'function') {
-        initSKFMap();
     }
 }
 
-// Formspree endpoint
-const FORMSPREE_URL = 'https://formspree.io/f/xdawqayo';
+function initContactForm() {
+    const contactForm = document.getElementById('contact-form');
+    if (!contactForm) return;
 
-// Store quote form data
-let quoteFormData = {};
+    contactForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
 
-// Form submission handling - Open modal instead of submitting
-document.querySelector('.quote-form')?.addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // Store quote form data
-    quoteFormData = {
-        pickup_city: document.getElementById('pickup-location')?.value || '',
-        delivery_city: document.getElementById('delivery-location')?.value || '',
-        vehicle_make: document.getElementById('car-make')?.value || '',
-        vehicle_model: document.getElementById('car-model')?.value || '',
-        vehicle_condition: document.getElementById('vehicle-condition')?.value || '',
-        trailer_type: document.getElementById('trailer-type')?.value || ''
-    };
-    
-    // Open the modal
-    const quoteModal = new bootstrap.Modal(document.getElementById('quoteModal'));
-    quoteModal.show();
-});
-
-// Contact info form in modal - sends combined data
-document.getElementById('contact-info-form')?.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const btn = this.querySelector('button[type="submit"]');
-    const originalText = btn.innerHTML;
-    btn.innerHTML = '<i class="bi bi-hourglass-split me-2"></i>Submitting...';
-    btn.disabled = true;
-    
-    // Combine quote data with contact info
-    const formData = {
-        _subject: 'New Quote Request - SKF Trucking',
-        name: document.getElementById('quote-name')?.value || '',
-        email: document.getElementById('quote-email')?.value || '',
-        phone: document.getElementById('quote-phone')?.value || '',
-        ...quoteFormData
-    };
-    
-    try {
-        const response = await fetch(FORMSPREE_URL, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify(formData)
-        });
-        
-        if (response.ok) {
-            btn.innerHTML = '<i class="bi bi-check-circle me-2"></i>Quote Requested!';
-            btn.style.background = 'linear-gradient(135deg, #28a745 0%, #218838 100%)';
-            
-            setTimeout(() => {
-                bootstrap.Modal.getInstance(document.getElementById('quoteModal')).hide();
-                btn.innerHTML = originalText;
-                btn.style.background = '';
-                btn.disabled = false;
-                this.reset();
-                document.querySelector('.quote-form')?.reset();
-                quoteFormData = {};
-            }, 1500);
-        } else {
-            throw new Error('Form submission failed');
+        if (!contactForm.checkValidity()) {
+            contactForm.reportValidity();
+            return;
         }
-    } catch (error) {
-        btn.innerHTML = '<i class="bi bi-x-circle me-2"></i>Error! Try again';
-        btn.style.background = '#dc3545';
-        setTimeout(() => {
-            btn.innerHTML = originalText;
-            btn.style.background = '';
-            btn.disabled = false;
-        }, 2000);
-    }
-});
 
-// Contact form submission
-document.getElementById('contact-form')?.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const btn = this.querySelector('button[type="submit"]');
-    const originalText = btn.innerHTML;
-    btn.innerHTML = '<i class="bi bi-hourglass-split me-2"></i>Sending...';
-    btn.disabled = true;
-    
-    const formData = new FormData(this);
-    formData.append('_subject', 'New Contact Message - SKF Trucking');
-    
+        const button = contactForm.querySelector('button[type="submit"]');
+        if (!button) return;
+
+        const originalText = button.innerHTML;
+        button.innerHTML = '<i class="bi bi-hourglass-split"></i> Sending...';
+        button.disabled = true;
+
+        const formData = new FormData(contactForm);
+        formData.append('_subject', 'New Contact Message - SKF Trucking');
+
+        try {
+            const response = await fetch(FORMSPREE_URL, {
+                method: 'POST',
+                headers: { 'Accept': 'application/json' },
+                body: formData
+            });
+
+            if (!response.ok) {
+                throw new Error('Contact request failed');
+            }
+
+            button.innerHTML = '<i class="bi bi-check-circle-fill"></i> Message Sent';
+
+            setTimeout(() => {
+                contactForm.reset();
+                button.innerHTML = originalText;
+                button.disabled = false;
+            }, 1500);
+        } catch (error) {
+            button.innerHTML = '<i class="bi bi-x-circle-fill"></i> Try Again';
+
+            setTimeout(() => {
+                button.innerHTML = originalText;
+                button.disabled = false;
+            }, 1800);
+        }
+    });
+}
+
+async function initTestimonials() {
+    const track = document.getElementById('testimonialsTrack');
+    const dotsContainer = document.getElementById('sliderDots');
+    const prevButton = document.getElementById('prevBtn');
+    const nextButton = document.getElementById('nextBtn');
+
+    if (!track || !dotsContainer) return;
+
     try {
-        const response = await fetch(FORMSPREE_URL, {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'Accept': 'application/json'
+        const response = await fetch('reviews.json');
+        const reviews = await response.json();
+        const selectedReviews = reviews.slice(0, 6);
+
+        track.innerHTML = selectedReviews.map((review) => createTestimonialCard(review)).join('');
+        testimonialsState.total = selectedReviews.length;
+
+        if (!testimonialsState.total) return;
+
+        dotsContainer.innerHTML = selectedReviews
+            .map((_, index) => `<button class="slider-dot${index === 0 ? ' active' : ''}" type="button" data-index="${index}" aria-label="Go to review ${index + 1}"></button>`)
+            .join('');
+
+        dotsContainer.querySelectorAll('.slider-dot').forEach((dot) => {
+            dot.addEventListener('click', () => {
+                goToTestimonial(Number(dot.dataset.index || '0'));
+            });
+        });
+
+        prevButton?.addEventListener('click', () => goToTestimonial(testimonialsState.current - 1));
+        nextButton?.addEventListener('click', () => goToTestimonial(testimonialsState.current + 1));
+
+        const slider = document.querySelector('.testimonials-slider');
+        if (slider) {
+            slider.addEventListener('mouseenter', stopTestimonialsAutoplay);
+            slider.addEventListener('mouseleave', startTestimonialsAutoplay);
+        }
+
+        startTestimonialsAutoplay();
+        goToTestimonial(0);
+    } catch (error) {
+        track.innerHTML = `
+            <article class="testimonial-card">
+                <p>Reviews are temporarily unavailable. You can still request a quote or contact SKF Trucking directly.</p>
+            </article>
+        `;
+        dotsContainer.innerHTML = '';
+    }
+}
+
+function createTestimonialCard(review) {
+    const rating = Number(review.rating || 5);
+    const stars = Array.from({ length: rating }, () => '<i class="bi bi-star-fill"></i>').join('');
+    const initials = (review.author || 'SKF')
+        .split(' ')
+        .map((part) => part[0])
+        .join('')
+        .slice(0, 2)
+        .toUpperCase();
+
+    const formattedDate = review.date
+        ? new Date(review.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
+        : 'Recent review';
+
+    return `
+        <article class="testimonial-card">
+            <div class="testimonial-header">
+                <div class="stars">${stars}</div>
+                <div class="testimonial-tag">${escapeHtml(review.tag || 'Customer Review')}</div>
+            </div>
+            <p>"${escapeHtml(review.text || '')}"</p>
+            <div class="testimonial-author">
+                <div class="author-avatar">${escapeHtml(initials)}</div>
+                <div class="testimonial-meta">
+                    <strong>${escapeHtml(review.author || 'SKF Customer')}</strong>
+                    <span>${escapeHtml(formattedDate)}</span>
+                </div>
+            </div>
+        </article>
+    `;
+}
+
+function goToTestimonial(index) {
+    const track = document.getElementById('testimonialsTrack');
+    const dots = document.querySelectorAll('.slider-dot');
+    if (!track || !testimonialsState.total) return;
+
+    if (index < 0) index = testimonialsState.total - 1;
+    if (index >= testimonialsState.total) index = 0;
+
+    testimonialsState.current = index;
+    track.style.transform = `translateX(-${index * 100}%)`;
+
+    dots.forEach((dot, dotIndex) => {
+        dot.classList.toggle('active', dotIndex === index);
+    });
+}
+
+function startTestimonialsAutoplay() {
+    stopTestimonialsAutoplay();
+
+    if (testimonialsState.total <= 1) return;
+
+    testimonialsState.intervalId = window.setInterval(() => {
+        goToTestimonial(testimonialsState.current + 1);
+    }, 5000);
+}
+
+function stopTestimonialsAutoplay() {
+    if (testimonialsState.intervalId) {
+        clearInterval(testimonialsState.intervalId);
+        testimonialsState.intervalId = null;
+    }
+}
+
+function escapeHtml(value) {
+    return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
+function initSKFMap() {
+    const mapElement = document.getElementById('skf-map');
+    if (!mapElement || !window.google?.maps) return;
+
+    const detroit = { name: 'Detroit, MI (HQ)', lat: 42.331427, lng: -83.0457538 };
+    const destinations = [
+        { name: 'Chicago, IL', lat: 41.8781136, lng: -87.6297982 },
+        { name: 'Milwaukee, WI', lat: 43.0389025, lng: -87.9064736 },
+        { name: 'Addison, IL', lat: 41.931696, lng: -88.0017283 },
+        { name: 'Indianapolis, IN', lat: 39.768403, lng: -86.158068 },
+        { name: 'Cleveland, OH', lat: 41.49932, lng: -81.6943605 }
+    ];
+
+    const map = new google.maps.Map(mapElement, {
+        zoom: 6,
+        center: { lat: 41.5, lng: -85.5 },
+        mapTypeId: 'roadmap',
+        styles: [
+            { elementType: 'geometry', stylers: [{ color: '#eef4fb' }] },
+            { elementType: 'labels.text.fill', stylers: [{ color: '#18324d' }] },
+            { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#c8d7e8' }] },
+            { featureType: 'road.highway', elementType: 'geometry', stylers: [{ color: '#ffe99b' }] },
+            { featureType: 'road', elementType: 'geometry', stylers: [{ color: '#ffffff' }] }
+        ]
+    });
+
+    new google.maps.Marker({
+        position: { lat: detroit.lat, lng: detroit.lng },
+        map,
+        title: detroit.name,
+        icon: {
+            path: google.maps.SymbolPath.CIRCLE,
+            scale: 10,
+            fillColor: '#003366',
+            fillOpacity: 1,
+            strokeColor: '#ffd600',
+            strokeWeight: 3
+        }
+    });
+
+    destinations.forEach((destination) => {
+        new google.maps.Marker({
+            position: { lat: destination.lat, lng: destination.lng },
+            map,
+            title: destination.name,
+            icon: {
+                path: google.maps.SymbolPath.CIRCLE,
+                scale: 7,
+                fillColor: '#ffd600',
+                fillOpacity: 1,
+                strokeColor: '#003366',
+                strokeWeight: 2
             }
         });
-        
-        if (response.ok) {
-            btn.innerHTML = '<i class="bi bi-check-circle me-2"></i>Message Sent!';
-            btn.style.background = 'linear-gradient(135deg, #28a745 0%, #218838 100%)';
-            btn.style.color = 'white';
-            setTimeout(() => {
-                btn.innerHTML = originalText;
-                btn.style.background = '';
-                btn.style.color = '';
-                btn.disabled = false;
-                this.reset();
-            }, 2000);
-        } else {
-            throw new Error('Form submission failed');
-        }
-    } catch (error) {
-        btn.innerHTML = '<i class="bi bi-x-circle me-2"></i>Error!';
-        btn.style.background = '#dc3545';
-        setTimeout(() => {
-            btn.innerHTML = originalText;
-            btn.style.background = '';
-            btn.disabled = false;
-        }, 2000);
+
+        new google.maps.Polyline({
+            path: [
+                { lat: detroit.lat, lng: detroit.lng },
+                { lat: destination.lat, lng: destination.lng }
+            ],
+            geodesic: true,
+            strokeColor: '#00509e',
+            strokeOpacity: 0.75,
+            strokeWeight: 3,
+            map
+        });
+    });
+}
+
+function initPlacesAutocomplete() {
+    const pickupInput = document.getElementById('pickup-location');
+    const deliveryInput = document.getElementById('delivery-location');
+    const options = { types: ['(cities)'], componentRestrictions: { country: 'us' } };
+
+    if (pickupInput && window.google?.maps?.places) {
+        new google.maps.places.Autocomplete(pickupInput, options);
     }
-});
+
+    if (deliveryInput && window.google?.maps?.places) {
+        new google.maps.places.Autocomplete(deliveryInput, options);
+    }
+
+    const handleZipBlur = (event) => {
+        const value = event.target.value.trim();
+        if (!/^\d{5}$/.test(value)) return;
+
+        fetch(`https://api.zippopotam.us/us/${value}`)
+            .then((response) => response.ok ? response.json() : null)
+            .then((data) => {
+                const place = data?.places?.[0];
+                if (place) {
+                    event.target.value = `${place['place name']}, ${place['state abbreviation']}`;
+                }
+            })
+            .catch(() => {});
+    };
+
+    pickupInput?.addEventListener('blur', handleZipBlur);
+    deliveryInput?.addEventListener('blur', handleZipBlur);
+}
+
+function populateCarMakes() {
+    const makeSelect = document.getElementById('car-make');
+    if (!makeSelect || makeSelect.options.length > 1) return;
+
+    const makes = [
+        'Acura', 'Alfa Romeo', 'Aston Martin', 'Audi', 'Bentley', 'BMW', 'Buick', 'Cadillac',
+        'Chevrolet', 'Chrysler', 'Dodge', 'Ferrari', 'Fiat', 'Ford', 'Genesis', 'GMC', 'Honda',
+        'Hyundai', 'Infiniti', 'Jaguar', 'Jeep', 'Kia', 'Lamborghini', 'Land Rover', 'Lexus',
+        'Lincoln', 'Maserati', 'Mazda', 'Mercedes-Benz', 'Mini', 'Mitsubishi', 'Nissan',
+        'Porsche', 'Ram', 'Rolls-Royce', 'Subaru', 'Tesla', 'Toyota', 'Volkswagen', 'Volvo', 'Other'
+    ];
+
+    makes.forEach((make) => {
+        const option = document.createElement('option');
+        option.value = make;
+        option.textContent = make;
+        makeSelect.appendChild(option);
+    });
+}
+
+function initSKFMapAndAutocomplete() {
+    populateCarMakes();
+    initPlacesAutocomplete();
+    initSKFMap();
+}
+
+window.initSKFMapAndAutocomplete = initSKFMapAndAutocomplete;

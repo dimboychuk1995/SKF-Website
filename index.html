@@ -7,580 +7,712 @@
     <meta name="keywords" content="car shipping, auto transport, vehicle shipping, car hauling, nationwide shipping, veteran owned">
     <meta name="author" content="SKF Trucking">
     <title>SKF Trucking | Reliable Nationwide Car Shipping</title>
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="images/logo/Untitled design (3).png">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Bootstrap CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Bebas+Neue&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-    <!-- AOS CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header data-aos="fade-down">
-        <div class="container-fluid px-4">
-            <nav class="navbar navbar-expand-lg py-3">
-                <a class="logo" href="#">
-                    <img src="images/logo/Untitled design (3).png" alt="Logo" style="height:144px; width:auto; display:inline-block; vertical-align:middle;">
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                    <ul class="nav align-items-center">
-                        <li class="nav-item"><a class="nav-link" href="#quote">Get a Quote</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#veterans">Veterans</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#reviews">Reviews</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                        <li class="nav-item ms-3">
-                            <a class="btn btn-call" href="tel:+12242753425">
-                                <i class="bi bi-telephone-fill me-2"></i>Call Us,<br><span style="font-size:0.95em; font-weight:400;">+1 (224) 275-3425</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+    <div id="preloader" aria-hidden="true">
+        <div class="loader">
+            <div class="truck-icon">
+                <i class="bi bi-truck"></i>
+            </div>
+            <p>SKF TRUCKING</p>
         </div>
+    </div>
+
+    <header id="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="#hero" class="logo" aria-label="SKF Trucking home">
+                    <img src="images/logo/Untitled design (3).png" alt="SKF Trucking logo">
+                    <span>SKF <strong>TRUCKING</strong></span>
+                </a>
+
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#photos">Photos</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#coverage">Coverage</a></li>
+                    <li><a href="#veterans">Veterans</a></li>
+                    <li><a href="#discounts">Discounts</a></li>
+                    <li><a href="#testimonials">Reviews</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+
+                <a href="tel:+12242753425" class="nav-call"><i class="bi bi-telephone-fill"></i> (224) 275-3425</a>
+                <a href="#hero" class="nav-cta">Get a Quote</a>
+
+                <button class="hamburger" id="hamburger" type="button" aria-label="Toggle navigation" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </nav>
     </header>
 
-    <!-- 1. Hero with Quote Form -->
-    <section class="hero" id="quote">
-        <div class="hero-bg"></div>
-        <div class="container-fluid px-4 position-relative">
-            <div class="row align-items-start" style="padding-top: 100px;">
-                <!-- Left side - Text -->
-                <div class="col-lg-6 hero-text" data-aos="fade-right">
-                    <p class="hero-subtitle">TRUSTED AUTO TRANSPORT COMPANY</p>
-                    <h1 class="hero-title">YOUR AUTO TRANSPORT EXPERTS</h1>
-                    <p class="hero-desc">Ship your vehicle fast, safe, and secure with SKF Trucking. Get instant quote on your delivery with our shipping calculator.</p>
-                    <div class="hero-badges mt-4">
-                        <span class="badge-item"><i class="bi bi-shield-check"></i> Fully Insured</span>
-                        <span class="badge-item"><i class="bi bi-star-fill"></i> Top Rated</span>
-                        <span class="badge-item"><i class="bi bi-truck"></i> Nationwide</span>
-                    </div>
+    <section id="hero" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container hero-shell">
+            <div class="hero-copy reveal">
+                <span class="section-tag light">Trusted Auto Transport Company</span>
+                <h1>Your Auto Transport Experts</h1>
+                <p>Ship your vehicle fast, safe, and secure with SKF Trucking. Nationwide car shipping backed by real communication, transparent pricing, and veteran-friendly service.</p>
+                <div class="hero-points">
+                    <div><i class="bi bi-shield-check"></i> Fully insured transport</div>
+                    <div><i class="bi bi-stars"></i> Top-rated customer support</div>
+                    <div><i class="bi bi-geo-alt-fill"></i> Routes across 48 states</div>
                 </div>
-                <!-- Right side - Quote Form -->
-                <div class="col-lg-5 offset-lg-1" data-aos="fade-left">
-                    <div class="quote-card">
-                        <div class="quote-card-header">
-                            <div class="price-match">
-                                <span>WE PRICE MATCH OUR</span>
-                                <span>TOP COMPETITORS!</span>
+                <div class="hero-actions">
+                    <a href="#coverage" class="btn btn-outline-light">See Coverage</a>
+                    <a href="tel:+12242753425" class="btn btn-accent"><i class="bi bi-telephone-fill"></i> Call Now</a>
+                </div>
+            </div>
+
+            <div class="hero-content reveal" id="quote">
+                <div class="hero-quote-wrapper">
+                    <div class="hero-form-badge">Instant Request</div>
+                    <h2 class="hero-form-title">Get My Quote</h2>
+                    <p class="hero-form-subtitle">Fill out the shipment details. Contact information comes in the next step.</p>
+
+                    <form id="quote-form" class="hero-quote-form quote-form" novalidate>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="pickup-location">Pickup City</label>
+                                <input id="pickup-location" name="pickup_city" type="text" required placeholder="Zip or City">
                             </div>
-                            <div class="guarantee-badge">
-                                <span class="percent">100%</span>
-                                <span class="text">Best Price<br>Guaranteed</span>
+                            <div class="form-group">
+                                <label for="delivery-location">Delivery City</label>
+                                <input id="delivery-location" name="delivery_city" type="text" required placeholder="Zip or City">
                             </div>
                         </div>
-                        <div class="quote-card-body">
-                            <h2 class="quote-title"><span class="instant-badge">INSTANT</span>Get My Quote</h2>
-                            <p class="quote-subtitle">Reserve Your Spot On Our Trucks Today!</p>
-                            <form class="quote-form" id="quote-form">
-                                <div class="row">
-                                    <div class="col-6 mb-3">
-                                        <label class="form-label">Pickup City:</label>
-                                        <input id="pickup-location" name="pickup_city" type="text" class="form-control" placeholder="Zip or City" autocomplete="off" required>
-                                    </div>
-                                    <div class="col-6 mb-3">
-                                        <label class="form-label">Delivery City:</label>
-                                        <input id="delivery-location" name="delivery_city" type="text" class="form-control" placeholder="Zip or City" autocomplete="off" required>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-6 mb-3">
-                                        <label class="form-label">Vehicle Make:</label>
-                                        <select id="car-make" name="vehicle_make" class="form-select" required>
-                                            <option value="">Select Make</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-6 mb-3">
-                                        <label class="form-label">Vehicle Model:</label>
-                                        <input id="car-model" name="vehicle_model" type="text" class="form-control" placeholder="Model" required>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-6 mb-3">
-                                        <label class="form-label">Condition:</label>
-                                        <select id="vehicle-condition" name="vehicle_condition" class="form-select" required>
-                                            <option value="operable">Operable</option>
-                                            <option value="inoperable">Inoperable</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-6 mb-3">
-                                        <label class="form-label">Trailer Type:</label>
-                                        <select id="trailer-type" name="trailer_type" class="form-select" required>
-                                            <option value="open">Open Carrier</option>
-                                            <option value="enclosed">Enclosed Carrier</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <button type="submit" class="btn btn-quote w-100 mt-2">
-                                    GET MY QUOTE <i class="bi bi-arrow-right ms-2"></i>
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Stats Section -->
-    <section class="stats-section" data-aos="fade-up">
-        <div class="container">
-            <div class="row g-4 justify-content-center">
-                <div class="col-6 col-md-3">
-                    <div class="stat-card">
-                        <div class="stat-number" data-count="15">0</div>
-                        <div class="stat-label">Years Experience</div>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="stat-card">
-                        <div class="stat-number" data-count="125000+">0</div>
-                        <div class="stat-label">Cars Shipped</div>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="stat-card">
-                        <div class="stat-number" data-count="48">0</div>
-                        <div class="stat-label">States Covered</div>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="stat-card">
-                        <div class="stat-number" data-count="99">0</div>
-                        <div class="stat-label">% Satisfaction</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="car-make">Vehicle Make</label>
+                                <select id="car-make" name="vehicle_make" required>
+                                    <option value="">Select Make</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="car-model">Vehicle Model</label>
+                                <input id="car-model" name="vehicle_model" type="text" required placeholder="Model">
+                            </div>
+                        </div>
 
-    <!-- Services Section -->
-    <section id="services" class="services" data-aos="fade-up">
-        <div class="container">
-            <h2>Our Services</h2>
-            <div class="row g-4 justify-content-center">
-                <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="service-item h-100">
-                        <div class="service-icon">
-                            <i class="bi bi-truck"></i>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="vehicle-condition">Condition</label>
+                                <select id="vehicle-condition" name="vehicle_condition" required>
+                                    <option value="operable">Operable</option>
+                                    <option value="inoperable">Inoperable</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="trailer-type">Trailer Type</label>
+                                <select id="trailer-type" name="trailer_type" required>
+                                    <option value="open">Open Carrier</option>
+                                    <option value="enclosed">Enclosed Carrier</option>
+                                </select>
+                            </div>
                         </div>
-                        <h3>Open Carrier</h3>
-                        <p>The most popular and cost-effective way to ship your vehicle. Safe, reliable, and budget-friendly.</p>
-                    </div>
-                </div>
-                <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="service-item h-100">
-                        <div class="service-icon">
-                            <i class="bi bi-shield-check"></i>
-                        </div>
-                        <h3>Enclosed Carrier</h3>
-                        <p>Premium protection for luxury, classic, and exotic vehicles. Weather-proof and damage-free transport.</p>
-                    </div>
-                </div>
-                <div class="col-md-4" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="service-item h-100">
-                        <div class="service-icon">
-                            <i class="bi bi-house-door"></i>
-                        </div>
-                        <h3>Door-to-Door</h3>
-                        <p>Convenient pickup and delivery right at your doorstep. No terminal visits required.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Where We Work -->
-    <section class="services" style="background: var(--white) !important;" data-aos="fade-up" id="service-area">
-        <div class="container">
-            <h2 class="text-center mb-3">Our Routes from Detroit</h2>
-            <p class="lead text-center mb-2 mx-auto" style="max-width:700px;">
-                <strong>Based in Detroit, Michigan</strong> — we operate direct shipping routes to major Midwest cities.
-            </p>
-            <p class="text-center mb-2 mx-auto text-muted" style="max-width:600px;">
-                <i class="bi bi-geo-alt-fill text-danger"></i> Detroit HQ → 
-                <span class="text-warning">●</span> Chicago, Milwaukee, Indianapolis, Cleveland & more
-            </p>
-            <p class="text-center mb-4 mx-auto" style="max-width:600px;">
-                <i class="bi bi-globe-americas text-primary"></i> <strong>We also ship nationwide to all 48 continental states!</strong>
-            </p>
-            <div class="d-flex justify-content-center align-items-center" style="min-height:520px;">
-                <div id="skf-map" style="width:100%;max-width:900px;height:520px;min-width:320px;border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,0.15);"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Gallery -->
-    <section class="py-5" id="carhauler-gallery" data-aos="fade-up" style="background: var(--light);">
-        <div class="container">
-            <h2 class="text-center mb-4" style="color: var(--primary);">Our Fleet</h2>
-            <div id="carhaulerCarousel" class="carousel slide mx-auto" data-bs-ride="carousel" style="max-width: 800px;">
-                <div class="carousel-inner shadow-lg" style="border-radius: 16px; height: 450px;">
-                    <div class="carousel-item active">
-                        <img src="images/104786191_7081258914397_Original.jpg" class="d-block w-100 h-100 carousel-img" alt="Car Hauler 1">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="images/8a5e5143a_buckeyetrailers-3-chevy-trucks-sunset.jpg" class="d-block w-100 h-100 carousel-img" alt="Car Hauler 2">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="images/Sun-Country-4-Car-DropDeck-photo05.jpg" class="d-block w-100 h-100 carousel-img" alt="Car Hauler 3">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="images/Sun-Country-LoPro-4-Car-photo04.jpg" class="d-block w-100 h-100 carousel-img" alt="Car Hauler 4">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="images/sun-country-single-axle-3-car-photo02.jpg" class="d-block w-100 h-100 carousel-img" alt="Car Hauler 5">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="images/Sun-Country-Wedge-Trailer-photo01.jpg" class="d-block w-100 h-100 carousel-img" alt="Car Hauler 6">
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carhaulerCarousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carhaulerCarousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carhaulerCarousel" data-bs-slide-to="0" class="active"></button>
-                    <button type="button" data-bs-target="#carhaulerCarousel" data-bs-slide-to="1"></button>
-                    <button type="button" data-bs-target="#carhaulerCarousel" data-bs-slide-to="2"></button>
-                    <button type="button" data-bs-target="#carhaulerCarousel" data-bs-slide-to="3"></button>
-                    <button type="button" data-bs-target="#carhaulerCarousel" data-bs-slide-to="4"></button>
-                    <button type="button" data-bs-target="#carhaulerCarousel" data-bs-slide-to="5"></button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Veteran Support -->
-    <section id="veterans" class="py-5" data-aos="fade-up">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="veteran-support p-5 text-center">
-                        <h2 class="mb-4"><i class="bi bi-award-fill me-2"></i>Proudly Supporting Veterans</h2>
-                        <p class="lead mb-3">SKF Trucking is proud to support our veterans and military families.</p>
-                        <p class="mb-4">As a veteran-friendly company, we offer special discounts for veterans and active duty military personnel. Thank you for your service!</p>
-                        <a href="#quote" class="btn btn-warning btn-lg px-5">
-                            <i class="bi bi-star-fill me-2"></i>Get Veteran Discount
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why Choose Us -->
-    <section id="advantages" class="advantages" data-aos="fade-up">
-        <div class="container">
-            <h2>Why Choose Us</h2>
-            <div class="row g-4 justify-content-center">
-                <div class="col-md-3 col-6" data-aos="flip-left" data-aos-delay="100">
-                    <div class="advantage-item h-100">
-                        <span class="display-6 text-warning d-block"><i class="bi bi-shield-check"></i></span>
-                        <div class="mt-2 fw-semibold">Full Insurance</div>
-                        <small class="text-muted">Complete coverage for your vehicle</small>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6" data-aos="flip-left" data-aos-delay="200">
-                    <div class="advantage-item h-100">
-                        <span class="display-6 text-warning d-block"><i class="bi bi-person-badge"></i></span>
-                        <div class="mt-2 fw-semibold">Expert Drivers</div>
-                        <small class="text-muted">Trained professionals</small>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6" data-aos="flip-left" data-aos-delay="300">
-                    <div class="advantage-item h-100">
-                        <span class="display-6 text-warning d-block"><i class="bi bi-headset"></i></span>
-                        <div class="mt-2 fw-semibold">24/7 Support</div>
-                        <small class="text-muted">Always here to help</small>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6" data-aos="flip-left" data-aos-delay="400">
-                    <div class="advantage-item h-100">
-                        <span class="display-6 text-warning d-block"><i class="bi bi-cash-coin"></i></span>
-                        <div class="mt-2 fw-semibold">Best Rates</div>
-                        <small class="text-muted">Competitive pricing</small>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Reviews Section -->
-    <section id="reviews" class="reviews" data-aos="fade-up">
-        <div class="container">
-            <h2>OUR CUSTOMERS LOVE US!</h2>
-            <div class="reviews-carousel-wrapper">
-                <button class="carousel-arrow carousel-prev" aria-label="Previous reviews">
-                    <i class="bi bi-chevron-left"></i>
-                </button>
-                <div class="reviews-carousel">
-                    <div id="google-reviews" class="reviews-track">
-                        <!-- Reviews loaded by script.js -->
-                    </div>
-                </div>
-                <button class="carousel-arrow carousel-next" aria-label="Next reviews">
-                    <i class="bi bi-chevron-right"></i>
-                </button>
-            </div>
-            <div class="carousel-dots" id="carousel-dots"></div>
-            
-            <!-- Trust Badges -->
-            <div class="trust-section">
-                <h3 class="trust-title">Over 15,000 Satisfied Reviews!</h3>
-                <div class="trust-logos">
-                    <div class="trust-logo">
-                        <span class="logo-text logo-haulex">HaulEx</span>
-                    </div>
-                    <div class="trust-logo">
-                        <span class="logo-text logo-transport">TRANSPORT<br><span style="color:#FFD600;">★★★★★</span><br>REVIEWS</span>
-                    </div>
-                    <div class="trust-logo">
-                        <div class="bbb-badge">
-                            <span class="bbb-text">BBB</span>
-                            <span class="bbb-rating">A+<br><small>rating</small></span>
-                        </div>
-                    </div>
-                    <div class="trust-logo">
-                        <span class="logo-text logo-trustpilot"><span style="color:#00b67a;">★</span> Trustpilot</span>
-                    </div>
-                    <div class="trust-logo">
-                        <span class="logo-text logo-google"><span style="color:#4285f4;">G</span><span style="color:#ea4335;">o</span><span style="color:#fbbc05;">o</span><span style="color:#4285f4;">g</span><span style="color:#34a853;">l</span><span style="color:#ea4335;">e</span></span>
-                    </div>
-                    <div class="trust-logo">
-                        <span class="logo-text logo-yelp">yelp<span style="color:#ff1a1a;">✱</span></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact" data-aos="fade-up">
-        <div class="container">
-            <h2>Get In Touch</h2>
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <form class="contact-form" id="contact-form">
-                        <div class="mb-3">
-                            <input type="text" name="name" class="form-control" placeholder="Your Name" required>
-                        </div>
-                        <div class="mb-3">
-                            <input type="email" name="email" class="form-control" placeholder="Your Email" required>
-                        </div>
-                        <div class="mb-3">
-                            <input type="tel" name="phone" class="form-control" placeholder="Your Phone">
-                        </div>
-                        <div class="mb-3">
-                            <textarea class="form-control" name="message" rows="4" placeholder="Your Message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn w-100">
-                            <i class="bi bi-send me-2"></i>Send Message
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <i class="bi bi-arrow-right-circle-fill"></i> Continue to Contact Details
                         </button>
                     </form>
                 </div>
             </div>
-            <div class="contact-info mt-5">
-                <div class="row justify-content-center text-center">
-                    <div class="col-md-4 mb-3">
-                        <i class="bi bi-telephone-fill fs-3 text-warning mb-2 d-block"></i>
-                        <strong>Phone</strong><br>
-                        <a href="tel:+19991234567">+1 (224) 275-3425</a>
+        </div>
+    </section>
+
+    <section id="stats-banner" class="stats-banner">
+        <div class="container">
+            <div class="stats-banner-inner">
+                <div class="stats-text reveal">
+                    <div class="hero-badge">
+                        <i class="bi bi-patch-check-fill"></i>
+                        Licensed, Insured and Veteran Friendly
                     </div>
-                    <div class="col-md-4 mb-3">
-                        <i class="bi bi-envelope-fill fs-3 text-warning mb-2 d-block"></i>
-                        <strong>Email</strong><br>
-                        <a href="mailto:info@skftrucking.com">info@skftrucking.com</a>
+                    <h2>
+                        <span class="hero-line">Reliable Shipping</span>
+                        <span class="hero-line accent">Across 48 States</span>
+                    </h2>
+                    <p>From everyday sedans to luxury, classic, and dealer inventory moves, SKF Trucking keeps the process simple: clear rates, careful handling, and dependable pickup windows.</p>
+                    <div class="hero-buttons">
+                        <a href="#hero" class="btn btn-primary"><i class="bi bi-send-fill"></i> Start My Quote</a>
+                        <a href="#services" class="btn btn-outline-dark"><i class="bi bi-truck"></i> Explore Services</a>
                     </div>
-                    <div class="col-md-4 mb-3">
-                        <i class="bi bi-clock-fill fs-3 text-warning mb-2 d-block"></i>
-                        <strong>Working Hours</strong><br>
-                        <span>24/7 Available</span>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-box reveal">
+                        <span class="stat-number" data-target="15">0</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat-box reveal">
+                        <span class="stat-number" data-target="125000">0</span>
+                        <span class="stat-suffix">+</span>
+                        <span class="stat-label">Cars Shipped</span>
+                    </div>
+                    <div class="stat-box reveal">
+                        <span class="stat-number" data-target="48">0</span>
+                        <span class="stat-label">States Covered</span>
+                    </div>
+                    <div class="stat-box reveal">
+                        <span class="stat-number" data-target="99">0</span>
+                        <span class="stat-suffix">%</span>
+                        <span class="stat-label">Customer Satisfaction</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer data-aos="fade-up">
+    <section id="services" class="section">
         <div class="container">
-            <div class="footer-content py-4">
-                <div class="footer-brand">
-                    <img src="images/logo/Untitled design (3).png" alt="Logo" style="height:80px; width:auto; display:inline-block; vertical-align:middle;">
-                    <!-- Лозунг убран по просьбе пользователя -->
+            <div class="section-header">
+                <span class="section-tag">What We Move</span>
+                <h2>Our Services</h2>
+                <p>SKF Trucking stays focused on vehicle shipping, but the customer experience now follows the same cleaner, section-driven flow as your reference project.</p>
+            </div>
+            <div class="services-grid">
+                <article class="service-card reveal">
+                    <div class="service-icon"><i class="bi bi-truck"></i></div>
+                    <h3>Open Carrier</h3>
+                    <p>The most popular and cost-effective option for standard vehicle moves with consistent nationwide availability.</p>
+                </article>
+                <article class="service-card reveal">
+                    <div class="service-icon"><i class="bi bi-shield-lock-fill"></i></div>
+                    <h3>Enclosed Carrier</h3>
+                    <p>Extra protection for luxury, collector, classic, and weather-sensitive vehicles that need premium transport.</p>
+                </article>
+                <article class="service-card reveal">
+                    <div class="service-icon"><i class="bi bi-house-door-fill"></i></div>
+                    <h3>Door-to-Door</h3>
+                    <p>Convenient pickup and delivery arranged as close to your requested addresses as safely accessible.</p>
+                </article>
+                <article class="service-card reveal">
+                    <div class="service-icon"><i class="bi bi-clock-history"></i></div>
+                    <h3>Expedited Scheduling</h3>
+                    <p>Fast-turnaround coordination for urgent dealer moves, relocation needs, and high-priority shipments.</p>
+                </article>
+                <article class="service-card reveal">
+                    <div class="service-icon"><i class="bi bi-geo-alt-fill"></i></div>
+                    <h3>Midwest Priority Routes</h3>
+                    <p>Detroit-centered regional lanes with regular activity through Illinois, Indiana, Ohio, and Wisconsin.</p>
+                </article>
+                <article class="service-card reveal">
+                    <div class="service-icon"><i class="bi bi-person-badge-fill"></i></div>
+                    <h3>Dealer &amp; Private Moves</h3>
+                    <p>Flexible service for private owners, repeat shippers, relocation clients, and dealership inventory transport.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="photos" class="section section-dark">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Our Work</span>
+                <h2>Shipping Gallery</h2>
+                <p>One unified gallery for SKF fleet photos and shipping examples. The first 3 images are shown by default, and the rest expand on demand.</p>
+            </div>
+
+            <div class="gallery-grid gallery-expandable" id="photosGrid">
+                <article class="gallery-item reveal">
+                    <img src="images/104786191_7081258914397_Original.jpg" alt="SKF fleet photo 1" loading="lazy">
+                    <div class="gallery-caption"><span>Fleet on Route</span></div>
+                </article>
+                <article class="gallery-item reveal">
+                    <img src="images/8a5e5143a_buckeyetrailers-3-chevy-trucks-sunset.jpg" alt="SKF fleet photo 2" loading="lazy">
+                    <div class="gallery-caption"><span>Long-Haul Fleet</span></div>
+                </article>
+                <article class="gallery-item reveal">
+                    <img src="images/Sun-Country-4-Car-DropDeck-photo05.jpg" alt="SKF fleet photo 3" loading="lazy">
+                    <div class="gallery-caption"><span>Drop Deck Route</span></div>
+                </article>
+                <article class="gallery-item reveal">
+                    <img src="images/Sun-Country-LoPro-4-Car-photo04.jpg" alt="SKF fleet photo 4" loading="lazy">
+                    <div class="gallery-caption"><span>Premium Coverage</span></div>
+                </article>
+                <article class="gallery-item reveal">
+                    <img src="images/sun-country-single-axle-3-car-photo02.jpg" alt="SKF fleet photo 5" loading="lazy">
+                    <div class="gallery-caption"><span>Specialty Vehicle Moves</span></div>
+                </article>
+                <article class="gallery-item reveal">
+                    <img src="images/Sun-Country-Wedge-Trailer-photo01.jpg" alt="SKF fleet photo 6" loading="lazy">
+                    <div class="gallery-caption"><span>Open Carrier</span></div>
+                </article>
+            </div>
+
+            <div class="photos-load-more">
+                <button id="loadMorePhotos" class="btn btn-outline-dark" type="button"><i class="bi bi-images"></i> Show More Photos</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content reveal">
+                    <span class="section-tag">Who We Are</span>
+                    <h2>About SKF Trucking</h2>
+                    <p class="lead">SKF Trucking is a veteran-friendly auto transport company built around direct communication, dependable scheduling, and safe nationwide delivery.</p>
+                    <p>We focus on car shipping across the continental United States with routes that frequently connect Detroit to major Midwest markets while still supporting long-distance coast-to-coast moves.</p>
+                    <p>Whether you're relocating, buying a vehicle out of state, moving dealer inventory, or protecting a specialty car with enclosed service, the goal stays the same: keep transport straightforward and predictable.</p>
+                    <div class="about-features">
+                        <div class="about-feature"><i class="bi bi-check-circle-fill"></i><span>Fully licensed and insured</span></div>
+                        <div class="about-feature"><i class="bi bi-check-circle-fill"></i><span>Transparent quote process</span></div>
+                        <div class="about-feature"><i class="bi bi-check-circle-fill"></i><span>Open and enclosed options</span></div>
+                        <div class="about-feature"><i class="bi bi-check-circle-fill"></i><span>Responsive dispatch support</span></div>
+                        <div class="about-feature"><i class="bi bi-check-circle-fill"></i><span>Detroit-based route expertise</span></div>
+                        <div class="about-feature"><i class="bi bi-check-circle-fill"></i><span>Veteran discounts available</span></div>
+                    </div>
+                    <a href="#hero" class="btn btn-primary"><i class="bi bi-send-fill"></i> Request a Quote</a>
                 </div>
-                <div class="footer-links">
-                    <a href="#quote">Get Quote</a>
-                    <a href="#services">Services</a>
-                    <a href="#reviews">Reviews</a>
-                    <a href="#contact">Contact</a>
-                </div>
-                <div class="social-links">
-                    <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-                    <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
-                    <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+
+                <div class="about-image reveal">
+                    <div class="about-image-box">
+                        <img src="images/104786191_7081258914397_Original.jpg" alt="SKF Trucking fleet on the road" loading="lazy">
+                    </div>
+                    <div class="experience-badge">
+                        <span class="exp-number">24/7</span>
+                        <span class="exp-text">Dispatch<br>Support</span>
+                    </div>
                 </div>
             </div>
-            <hr class="my-3 opacity-25">
-            <div class="text-center py-2">
-                <p class="mb-0 opacity-75">© 2026 SKF Trucking. All rights reserved.</p>
+        </div>
+    </section>
+
+    <section id="advantages" class="section section-muted">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Our Advantage</span>
+                <h2>Why Choose SKF Trucking?</h2>
+                <p>The visual structure follows the reference site, but the content stays grounded in SKF's vehicle transport offering.</p>
+            </div>
+            <div class="why-grid">
+                <article class="why-card reveal">
+                    <div class="why-number">01</div>
+                    <h3>Fast Response</h3>
+                    <p>Quote requests are reviewed quickly so customers get pricing and next steps without unnecessary back-and-forth.</p>
+                </article>
+                <article class="why-card reveal">
+                    <div class="why-number">02</div>
+                    <h3>Transparent Pricing</h3>
+                    <p>Clear expectations on trailer type, service level, and route planning before a shipment is scheduled.</p>
+                </article>
+                <article class="why-card reveal">
+                    <div class="why-number">03</div>
+                    <h3>Careful Handling</h3>
+                    <p>Vehicle condition, route complexity, and carrier type are matched to the shipment instead of using a one-size-fits-all approach.</p>
+                </article>
+                <article class="why-card reveal">
+                    <div class="why-number">04</div>
+                    <h3>Veteran-Friendly Service</h3>
+                    <p>Military families and veterans get dedicated support and available discount programs where applicable.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="coverage" class="section section-dark coverage-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Where We Operate</span>
+                <h2>Nationwide Coverage</h2>
+                <p>Detroit is the operational anchor, but SKF Trucking serves the 48 contiguous United States.</p>
+            </div>
+            <div class="coverage-content">
+                <div class="map-card reveal">
+                    <div id="skf-map" class="map-frame" aria-label="SKF route map"></div>
+                </div>
+                <div class="coverage-details reveal">
+                    <div class="coverage-info">
+                        <h3><i class="bi bi-signpost-split-fill"></i> Popular Routes</h3>
+                        <ul class="route-list">
+                            <li><span>Detroit, MI</span><i class="bi bi-arrow-right"></i><span>Chicago, IL</span></li>
+                            <li><span>Detroit, MI</span><i class="bi bi-arrow-right"></i><span>Milwaukee, WI</span></li>
+                            <li><span>Detroit, MI</span><i class="bi bi-arrow-right"></i><span>Indianapolis, IN</span></li>
+                            <li><span>Detroit, MI</span><i class="bi bi-arrow-right"></i><span>Cleveland, OH</span></li>
+                            <li><span>Midwest</span><i class="bi bi-arrow-right"></i><span>Nationwide Delivery</span></li>
+                        </ul>
+                    </div>
+                    <div class="coverage-info">
+                        <h3><i class="bi bi-clock-history"></i> Estimated Transit Times</h3>
+                        <div class="transit-times">
+                            <div class="transit-item">
+                                <span>0-500 mi</span>
+                                <div class="transit-bar"><div class="bar" style="width: 25%"></div></div>
+                                <span>1 day</span>
+                            </div>
+                            <div class="transit-item">
+                                <span>500-1000 mi</span>
+                                <div class="transit-bar"><div class="bar" style="width: 50%"></div></div>
+                                <span>1-2 days</span>
+                            </div>
+                            <div class="transit-item">
+                                <span>1000-2000 mi</span>
+                                <div class="transit-bar"><div class="bar" style="width: 75%"></div></div>
+                                <span>2-4 days</span>
+                            </div>
+                            <div class="transit-item">
+                                <span>2000+ mi</span>
+                                <div class="transit-bar"><div class="bar" style="width: 100%"></div></div>
+                                <span>4-6 days</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="veterans" class="section section-veterans">
+        <div class="veterans-overlay"></div>
+        <div class="container">
+            <div class="veterans-content reveal">
+                <div class="veterans-icon"><i class="bi bi-award-fill"></i></div>
+                <span class="section-tag light">Honoring Our Heroes</span>
+                <h2>We Support Veterans</h2>
+                <p class="lead">SKF Trucking is proud to support veterans, active-duty military families, and customers who value straightforward service backed by respect and accountability.</p>
+                <div class="veterans-features">
+                    <article class="vet-feature reveal">
+                        <i class="bi bi-tags-fill"></i>
+                        <h4>Veteran Discounts</h4>
+                        <p>Special pricing is available for veterans and active-duty military on qualifying shipments.</p>
+                    </article>
+                    <article class="vet-feature reveal">
+                        <i class="bi bi-truck-flatbed"></i>
+                        <h4>Relocation Support</h4>
+                        <p>Ideal for military and family relocations that need dependable scheduling and direct communication.</p>
+                    </article>
+                    <article class="vet-feature reveal">
+                        <i class="bi bi-people-fill"></i>
+                        <h4>Respectful Service</h4>
+                        <p>From first quote to final delivery, the customer experience is built to stay responsive and clear.</p>
+                    </article>
+                </div>
+                <a href="#hero" class="btn btn-white"><i class="bi bi-star-fill"></i> Get Veteran Discount</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="discounts" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Save More</span>
+                <h2>Discounts &amp; Deals</h2>
+                <p>SKF now presents savings with the same card-style hierarchy as the reference site, while keeping existing business offers.</p>
+            </div>
+            <div class="discounts-grid">
+                <article class="discount-card featured reveal">
+                    <div class="discount-badge">Most Popular</div>
+                    <div class="discount-percent">10%</div>
+                    <h3>Military / Veteran</h3>
+                    <p>Available for active-duty military personnel, veterans, and eligible military families.</p>
+                    <a href="#hero" class="btn btn-primary">Claim Discount</a>
+                </article>
+                <article class="discount-card reveal">
+                    <div class="discount-percent">15%</div>
+                    <h3>Repeat Customer</h3>
+                    <p>Preferred pricing for returning customers who trust SKF Trucking with multiple moves.</p>
+                    <a href="#hero" class="btn btn-outline-dark">Claim Discount</a>
+                </article>
+                <article class="discount-card reveal">
+                    <div class="discount-percent">$100</div>
+                    <h3>Referral Bonus</h3>
+                    <p>Send a qualified referral and both sides can benefit on a future shipment arrangement.</p>
+                    <a href="#hero" class="btn btn-outline-dark">Refer Now</a>
+                </article>
+                <article class="discount-card reveal">
+                    <div class="discount-percent">10%</div>
+                    <h3>First Responder</h3>
+                    <p>Police, firefighters, EMTs, and other first responders can request a dedicated discount.</p>
+                    <a href="#hero" class="btn btn-outline-dark">Claim Discount</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="section section-muted testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Reviews</span>
+                <h2>What Our Customers Say</h2>
+                <p>SKF keeps the real review data, but the presentation now follows the cleaner slider pattern from the reference site.</p>
+            </div>
+            <div class="testimonials-slider reveal">
+                <div class="testimonials-track" id="testimonialsTrack"></div>
+                <div class="slider-controls">
+                    <button class="slider-btn" id="prevBtn" type="button" aria-label="Previous testimonial"><i class="bi bi-chevron-left"></i></button>
+                    <div class="slider-dots" id="sliderDots"></div>
+                    <button class="slider-btn" id="nextBtn" type="button" aria-label="Next testimonial"><i class="bi bi-chevron-right"></i></button>
+                </div>
+            </div>
+
+            <div class="trust-strip reveal">
+                <span>Trusted by customers who value safe delivery, fair pricing, and clear communication.</span>
+                <div class="trust-logos">
+                    <span>HaulEx</span>
+                    <span>Transport Reviews</span>
+                    <span>BBB A+</span>
+                    <span>Google</span>
+                    <span>Trustpilot</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Questions?</span>
+                <h2>Frequently Asked Questions</h2>
+                <p>Common questions about SKF auto transport, rebuilt with the accordion behavior from the reference project.</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item reveal">
+                    <button class="faq-question" type="button">
+                        <span>What types of vehicles do you ship?</span>
+                        <i class="bi bi-plus-lg"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>SKF Trucking handles sedans, SUVs, pickup trucks, classic cars, luxury vehicles, and many dealership or private-party shipments using open or enclosed carrier options.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-question" type="button">
+                        <span>Do you offer enclosed transport?</span>
+                        <i class="bi bi-plus-lg"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes. Enclosed carrier service is available for customers who want additional protection for higher-value, collector, or weather-sensitive vehicles.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-question" type="button">
+                        <span>How is pricing determined?</span>
+                        <i class="bi bi-plus-lg"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Quotes are based on pickup and delivery locations, carrier type, vehicle condition, route demand, and timing. The form collects the exact shipment details needed to price it accurately.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-question" type="button">
+                        <span>Can I enter a ZIP code instead of a city?</span>
+                        <i class="bi bi-plus-lg"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes. If you enter a 5-digit ZIP code in the pickup or delivery field, SKF will try to resolve it to a city and state automatically.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-question" type="button">
+                        <span>Do you support military and veteran moves?</span>
+                        <i class="bi bi-plus-lg"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes. SKF Trucking offers veteran-friendly service and available discounts for qualified military and veteran customers.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-question" type="button">
+                        <span>How do I finish my quote request?</span>
+                        <i class="bi bi-plus-lg"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>First you fill in shipment details in the hero form. Then a short modal asks for your name, email, and phone number so SKF can send the quote and follow up directly.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-bar">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <i class="bi bi-telephone-fill"></i>
+                    <div>
+                        <strong>Call Us</strong>
+                        <a href="tel:+12242753425">(224) 275-3425</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="bi bi-envelope-fill"></i>
+                    <div>
+                        <strong>Email Us</strong>
+                        <a href="mailto:info@skftrucking.com">info@skftrucking.com</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="bi bi-clock-fill"></i>
+                    <div>
+                        <strong>Hours</strong>
+                        <span>24/7 Dispatch Available</span>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="bi bi-geo-alt-fill"></i>
+                    <div>
+                        <strong>Headquarters</strong>
+                        <span>Detroit, Michigan</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Let's Talk</span>
+                <h2>Contact SKF Trucking</h2>
+                <p>The original contact flow is preserved: messages still submit through the existing Formspree endpoint.</p>
+            </div>
+            <div class="contact-layout">
+                <div class="contact-panel reveal">
+                    <h3>Send a Message</h3>
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" name="name" placeholder="Your Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" placeholder="Your Email" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="tel" name="phone" placeholder="Your Phone">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" value="General Inquiry" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group full-width">
+                            <textarea name="message" rows="5" placeholder="Tell us about your shipment or question" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full"><i class="bi bi-send-fill"></i> Send Message</button>
+                    </form>
+                </div>
+
+                <div class="contact-side reveal">
+                    <div class="contact-card">
+                        <h3>Why customers choose SKF</h3>
+                        <ul class="contact-checks">
+                            <li><i class="bi bi-check-circle-fill"></i> Fast quote intake</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Veteran-friendly support</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Open and enclosed transport</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Detroit-to-Midwest strength with nationwide reach</li>
+                        </ul>
+                    </div>
+                    <div class="contact-card accent-card">
+                        <h3>Need a quote instead?</h3>
+                        <p>Use the shipment form at the top of the page to start the quote flow and then submit your contact details in one quick follow-up step.</p>
+                        <a href="#hero" class="btn btn-dark btn-full"><i class="bi bi-arrow-up-circle-fill"></i> Go to Quote Form</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="images/logo/Untitled design (3).png" alt="SKF Trucking logo">
+                        <span>SKF <strong>TRUCKING</strong></span>
+                    </div>
+                    <p>Reliable nationwide car shipping with transparent communication, flexible carrier options, and veteran-friendly support.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#coverage">Coverage</a></li>
+                        <li><a href="#testimonials">Reviews</a></li>
+                        <li><a href="#hero">Get a Quote</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">Open Carrier</a></li>
+                        <li><a href="#services">Enclosed Carrier</a></li>
+                        <li><a href="#services">Door-to-Door</a></li>
+                        <li><a href="#services">Expedited Scheduling</a></li>
+                        <li><a href="#veterans">Veteran Discounts</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="bi bi-telephone-fill"></i> (224) 275-3425</li>
+                        <li><i class="bi bi-envelope-fill"></i> info@skftrucking.com</li>
+                        <li><i class="bi bi-geo-alt-fill"></i> Detroit, Michigan</li>
+                        <li><i class="bi bi-clock-fill"></i> 24/7 Available</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 SKF Trucking. All rights reserved.</p>
+                <p>Nationwide Auto Transport</p>
             </div>
         </div>
     </footer>
 
-    <!-- Scroll to Top Button -->
-    <button class="scroll-top" aria-label="Scroll to top">
+    <button id="backToTop" class="back-to-top" type="button" aria-label="Back to top">
         <i class="bi bi-chevron-up"></i>
     </button>
 
-    <!-- Quote Modal -->
     <div class="modal fade" id="quoteModal" tabindex="-1" aria-labelledby="quoteModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title" id="quoteModalLabel">
-                        <i class="bi bi-person-lines-fill me-2"></i>Almost There!
-                    </h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="quoteModalLabel"><i class="bi bi-person-lines-fill"></i> Complete Your Quote Request</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body p-4">
-                    <p class="text-muted mb-4">Please provide your contact information to receive your free quote.</p>
+                <div class="modal-body">
+                    <p class="modal-copy">Please provide your contact details so SKF Trucking can send your quote and follow up about scheduling.</p>
                     <form id="contact-info-form">
-                        <div class="mb-3">
-                            <label class="form-label fw-semibold">Your Name <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="quote-name" name="name" placeholder="John Doe" required>
+                        <div class="form-group modal-field">
+                            <label for="quote-name">Your Name</label>
+                            <input type="text" class="form-control" id="quote-name" name="name" required placeholder="John Doe">
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label fw-semibold">Your Email <span class="text-danger">*</span></label>
-                            <input type="email" class="form-control" id="quote-email" name="email" placeholder="john@example.com" required>
+                        <div class="form-group modal-field">
+                            <label for="quote-email">Your Email</label>
+                            <input type="email" class="form-control" id="quote-email" name="email" required placeholder="john@example.com">
                         </div>
-                        <div class="mb-4">
-                            <label class="form-label fw-semibold">Your Phone <span class="text-danger">*</span></label>
-                            <input type="tel" class="form-control" id="quote-phone" name="phone" placeholder="(555) 123-4567" required>
+                        <div class="form-group modal-field">
+                            <label for="quote-phone">Your Phone</label>
+                            <input type="tel" class="form-control" id="quote-phone" name="phone" required placeholder="(555) 123-4567">
                         </div>
-                        <button type="submit" class="btn btn-quote w-100">
-                            <i class="bi bi-send me-2"></i>SUBMIT REQUEST
-                        </button>
+                        <button type="submit" class="btn btn-primary btn-full"><i class="bi bi-send-fill"></i> Submit Request</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-</body>
-    <!-- Main Script (must load before Google Maps callback) -->
+
     <script src="script.js"></script>
-    <!-- Google Maps JS API -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYaEO6La-OE4cHMqXUK_sRgEHScmOFr0Q&libraries=places&callback=initSKFMapAndAutocomplete&language=en" async defer></script>
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- AOS JS -->
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    <script>
-    function initSKFMap() {
-        const detroit = { name: 'Detroit, MI (HQ)', pos: { lat: 42.331427, lng: -83.0457538 } };
-        const destinations = [
-            { name: 'Chicago, IL', pos: { lat: 41.8781136, lng: -87.6297982 } },
-            { name: 'Milwaukee, WI', pos: { lat: 43.0389025, lng: -87.9064736 } },
-            { name: 'Addison, IL', pos: { lat: 41.931696, lng: -88.0017283 } },
-            { name: 'Indianapolis, IN', pos: { lat: 39.768403, lng: -86.158068 } },
-            { name: 'Cleveland, OH', pos: { lat: 41.49932, lng: -81.6943605 } }
-        ];
-        
-        const map = new google.maps.Map(document.getElementById('skf-map'), {
-            zoom: 6,
-            center: { lat: 41.5, lng: -85.5 },
-            mapTypeId: 'roadmap',
-            styles: [
-                { elementType: 'geometry', stylers: [{ color: '#f5f5f5' }] },
-                { elementType: 'labels.text.stroke', stylers: [{ color: '#ffffff' }] },
-                { elementType: 'labels.text.fill', stylers: [{ color: '#222' }] },
-                { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#c8d7e8' }] },
-                { featureType: 'road', elementType: 'geometry', stylers: [{ color: '#ffffff' }] },
-                { featureType: 'road.highway', elementType: 'geometry', stylers: [{ color: '#ffe8a8' }] },
-            ]
-        });
-        
-        // Detroit marker (HQ) - larger and different color
-        new google.maps.Marker({
-            position: detroit.pos,
-            map,
-            title: detroit.name,
-            icon: {
-                path: google.maps.SymbolPath.CIRCLE,
-                scale: 14,
-                fillColor: '#e74c3c',
-                fillOpacity: 1,
-                strokeColor: '#fff',
-                strokeWeight: 4
-            },
-            zIndex: 100
-        });
-        
-        // Add label for Detroit
-        new google.maps.Marker({
-            position: { lat: detroit.pos.lat + 0.4, lng: detroit.pos.lng },
-            map,
-            icon: {
-                path: 'M 0 0',
-                scale: 0
-            },
-            label: {
-                text: '🏠 DETROIT HQ',
-                color: '#003366',
-                fontSize: '12px',
-                fontWeight: 'bold'
-            }
-        });
-        
-        // Draw lines from Detroit to each destination
-        destinations.forEach(dest => {
-            // Route line
-            new google.maps.Polyline({
-                path: [detroit.pos, dest.pos],
-                geodesic: true,
-                strokeColor: '#003366',
-                strokeOpacity: 0.8,
-                strokeWeight: 3,
-                map: map,
-                icons: [{
-                    icon: {
-                        path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
-                        scale: 3,
-                        strokeColor: '#003366',
-                        fillColor: '#FFD600',
-                        fillOpacity: 1
-                    },
-                    offset: '100%'
-                }]
-            });
-            
-            // Destination marker
-            new google.maps.Marker({
-                position: dest.pos,
-                map,
-                title: dest.name,
-                icon: {
-                    path: google.maps.SymbolPath.CIRCLE,
-                    scale: 10,
-                    fillColor: '#FFD600',
-                    fillOpacity: 1,
-                    strokeColor: '#003366',
-                    strokeWeight: 3
-                }
-            });
-        });
-    }
-    </script>
+</body>
 </html>
